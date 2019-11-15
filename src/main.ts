@@ -1,3 +1,4 @@
+import 'hammerjs';
 /*
 =========================================================
 * BLK Design System Angular - v1.0.0

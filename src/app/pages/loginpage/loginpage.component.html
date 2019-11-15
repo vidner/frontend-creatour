@@ -52,6 +52,9 @@
       </div>
       <ul class="navbar-nav">
         <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/project']"> Project </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" [routerLink]="['/register']"> Register </a>
         </li>
         <li class="nav-item">
@@ -88,12 +91,13 @@
                   >
                     <div class="input-group-prepend">
                       <div class="input-group-text">
-                        <i class="tim-icons icon-email-85"> </i>
+                        <i class="tim-icons icon-badge"> </i>
                       </div>
                     </div>
                     <input
                       class="form-control"
-                      placeholder="Email"
+                      placeholder="Username"
+                      [(ngModel)]="account.username"
                       type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
@@ -111,10 +115,17 @@
                     <input
                       class="form-control"
                       placeholder="Password"
-                      type="text"
+                      [(ngModel)]="account.password"
+                      type="password"
                       (focus)="focus2 = true"
                       (blur)="focus2 = false"
                     />
+                  </div>
+                  <div class="form-check text-left">
+                    <label class="form-check-label">
+                      Forget your password ?
+                      <a href="javascript:void(0)"> Click here </a> .
+                    </label>
                   </div>
                 </form>
               </div>

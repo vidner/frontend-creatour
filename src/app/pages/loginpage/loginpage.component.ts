@@ -9,7 +9,12 @@ export class LoginpageComponent implements OnInit, OnDestroy {
   focus;
   focus1;
   focus2;
-  constructor() {}
+  account: any ;
+  constructor(private http: HttpClient) {
+    this.account.username = "";
+    this.account.password = "";
+    this.account.token = "";
+  }
   @HostListener("document:mousemove", ["$event"])
   onMouseMove(e) {
     var squares1 = document.getElementById("square1");
@@ -77,8 +82,13 @@ export class LoginpageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("register-page");
-
     this.onMouseMove(event);
+    var newLogin = JSON.parse(JSON.stringify({username: this.account.username, password: this.account.password}));
+    const url ='http://localhost:8888/api/login'
+    this.http.post(url,newLogin).subscribe((res)=>{
+      this.projects = res
+      console.log(this.data)
+    })
   }
   ngOnDestroy() {
     var body = document.getElementsByTagName("body")[0];
