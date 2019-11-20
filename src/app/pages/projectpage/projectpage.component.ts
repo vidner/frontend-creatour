@@ -15,7 +15,7 @@ export class ProjectpageComponent    {
   const url ='http://localhost:8888/api/projects'
   this.http.get(url).subscribe((res)=>{
     this.projects = res
-    console.log(this.data)
+    console.log(this.projects)
   })
   }
   

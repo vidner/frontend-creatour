@@ -84,59 +84,52 @@
                 <h4 class="card-title">Login</h4>
               </div>
               <div class="card-body">
-                <form class="form">
-                  <div
-                    class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus1 === true }"
-                  >
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="tim-icons icon-badge"> </i>
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                      <div class="form-group">
+                          <div
+                          class="input-group"
+                          [ngClass]="{ 'input-group-focus': focus1 === true }"
+                        >
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              <i class="tim-icons icon-badge"> </i>
+                            </div>
+                          </div>
+                          <input
+                            class="form-control"
+                            placeholder="Username"
+                            type="text"
+                            (focus)="focus1 = true"
+                            (blur)="focus1 = false"
+                            formControlName="username"
+                          />
+                        </div>
+                        <div
+                          class="input-group"
+                          [ngClass]="{ 'input-group-focus': focus2 === true }"
+                        >
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              <i class="tim-icons icon-lock-circle"> </i>
+                            </div>
+                          </div>
+                          <input
+                            class="form-control"
+                            placeholder="Password"
+                            formControlName="password"
+                            type="password"
+                            (focus)="focus2 = true"
+                            (blur)="focus2 = false"
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <input
-                      class="form-control"
-                      placeholder="Username"
-                      [(ngModel)]="account.username"
-                      type="text"
-                      (focus)="focus1 = true"
-                      (blur)="focus1 = false"
-                    />
-                  </div>
-                  <div
-                    class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus2 === true }"
-                  >
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="tim-icons icon-lock-circle"> </i>
+
+                      <div class="form-group">
+                        <button [disabled]="loading" class="btn btn-primary">Login</button>
+                        <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                       </div>
-                    </div>
-                    <input
-                      class="form-control"
-                      placeholder="Password"
-                      [(ngModel)]="account.password"
-                      type="password"
-                      (focus)="focus2 = true"
-                      (blur)="focus2 = false"
-                    />
-                  </div>
-                  <div class="form-check text-left">
-                    <label class="form-check-label">
-                      Forget your password ?
-                      <a href="javascript:void(0)"> Click here </a> .
-                    </label>
-                  </div>
-                </form>
-              </div>
-              <div class="card-footer">
-                <a
-                  class="btn btn-primary btn-round btn-lg"
-                  href="javascript:void(0)"
-                >
-                  Login
-                </a>
-              </div>
+                      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                    </form>
             </div>
           </div>
         </div>
