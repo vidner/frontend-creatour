@@ -215,29 +215,57 @@
           <br>
           <br>
           <div class="card card-coin card-plain">
-            <div class="card-header">
-              <img class="img-center img-fluid" src="assets/img/binomo.png" />
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">{{project.name}}</h4>
-                  <span> {{project.description}} </span>
-                  <hr class="line-primary" />
+              <div class="card-header">
+                <img class="img-center img-fluid" src="assets/img/binomo.png" />
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <h4 class="text-uppercase">{{project.name}}</h4>
+                    <span> {{project.description}} </span>
+                    <hr class="line-primary" />
+                  </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12 text-center">
+                          <button
+                          class="btn btn-default btn-sm"
+                          > finance
+                          </button>
+                          <button
+                          class="btn btn-default btn-sm"
+                          > back-end
+                          </button>
+                          <button
+                          class="btn btn-default btn-sm"
+                          > remote
+                          </button>
+                          <button
+                          class="btn btn-default btn-sm"
+                          > ez
+                          </button>
+                          
+                      </div>
+                    </div>
+                </div>  
+                <div class="row">
+                  <br>
+                  <div class="col-md-10 offset-md-1" >
+                      <div class="progress-container progress-danger">
+                          <span class="text"> 3/4 People Joined  </span>
+                          <progressbar class="progress-bar-danger" [value]="75">
+                            <span class="progress-value"> 75% </span>
+                          </progressbar>
+                        </div>
+      
+                  </div>
                 </div>
               </div>
-              <div class="row">
-                <ul class="list-group">
-                  <li class="list-group-item">50 messages</li>
-                  <li class="list-group-item">100 emails</li>
-                  <li class="list-group-item">24/7 Support</li>
-                </ul>
+              <div class="card-footer text-center">
+                <button [routerLink]="['/project', project.id]" class="btn btn-primary btn-simple">Details</button>
               </div>
             </div>
-            <div class="card-footer text-center">
-              <button class="btn btn-primary btn-simple">Details</button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
