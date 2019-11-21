@@ -23,7 +23,7 @@
             <span class="text-white"> Our </span>
           </h1>
           <p class="text-white mb-3">
-            Sebuah platform web dimana orang dapat berkolaborasi pada proyek 
+            Sebuah platform web dimana orang dapat berkolaborasi pada proyek
             dan mendapatkan imbal hasil berdasarkan kontribusi.
           </p>
           <!-- <div class="btn-wrapper mb-3">
@@ -203,22 +203,26 @@
           <hr class="line-info" />
 
           <h1>
-            Choose the coin
-            <span class="text-info"> that fits your needs </span>
+            Recent
+            <span class="text-info"> Projects</span>
           </h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3" *ngFor="let project of recentProjects">
+          <br>
+          <br>
+          <br>
+          <br>
           <div class="card card-coin card-plain">
             <div class="card-header">
-              <img class="img-center img-fluid" src="assets/img/bitcoin.png" />
+              <img class="img-center img-fluid" src="assets/img/binomo.png" />
             </div>
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">Light Coin</h4>
-                  <span> Plan </span>
+                  <h4 class="text-uppercase">{{project.name}}</h4>
+                  <span> {{project.description}} </span>
                   <hr class="line-primary" />
                 </div>
               </div>
@@ -231,59 +235,7 @@
               </div>
             </div>
             <div class="card-footer text-center">
-              <button class="btn btn-primary btn-simple">Get plan</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-coin card-plain">
-            <div class="card-header">
-              <img class="img-center img-fluid" src="assets/img/etherum.png" />
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">Dark Coin</h4>
-                  <span> Plan </span>
-                  <hr class="line-success" />
-                </div>
-              </div>
-              <div class="row">
-                <ul class="list-group">
-                  <li class="list-group-item">150 messages</li>
-                  <li class="list-group-item">1000 emails</li>
-                  <li class="list-group-item">24/7 Support</li>
-                </ul>
-              </div>
-            </div>
-            <div class="card-footer text-center">
-              <button class="btn btn-success btn-simple">Get plan</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-coin card-plain">
-            <div class="card-header">
-              <img class="img-center img-fluid" src="assets/img/ripp.png" />
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">Bright Coin</h4>
-                  <span> Plan </span>
-                  <hr class="line-info" />
-                </div>
-              </div>
-              <div class="row">
-                <ul class="list-group">
-                  <li class="list-group-item">350 messages</li>
-                  <li class="list-group-item">10K emails</li>
-                  <li class="list-group-item">24/7 Support</li>
-                </ul>
-              </div>
-            </div>
-            <div class="card-footer text-center">
-              <button class="btn btn-info btn-simple">Get plan</button>
+              <button class="btn btn-primary btn-simple">Details</button>
             </div>
           </div>
         </div>

@@ -1,15 +1,26 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import Chart from "chart.js";
 
+import { ProjectService } from "../../_services/project.service";
+
 @Component({
   selector: "app-landingpage",
   templateUrl: "landingpage.component.html"
 })
 export class LandingpageComponent implements OnInit, OnDestroy {
   isCollapsed = true;
-  constructor() {}
+  recentProjects: any=[];
+  constructor(
+    private projectService: ProjectService
+  ) {}
 
   ngOnInit() {
+    this.projectService.getProjects()
+      .subscribe(projects => {
+        this.recentProjects = projects.data.slice(0,4);
+        console.log(this.recentProjects);
+      });
+
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("landing-page");
 
