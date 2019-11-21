@@ -33,6 +33,10 @@ export class AuthenticationService {
       }));
   }
 
+  register(username: string, password: string,name: string, email: string) {
+    return this.http.post<any>('http://localhost:8888/api/auth/register', {username, password ,name ,email});
+  }
+  
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');

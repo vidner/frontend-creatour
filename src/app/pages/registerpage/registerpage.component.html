@@ -18,7 +18,7 @@
                 <h4 class="card-title">Register</h4>
               </div>
               <div class="card-body">
-                <form class="form">
+                <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                   <div
                     class="input-group"
                     [ngClass]="{ 'input-group-focus': focus === true }"
@@ -34,6 +34,7 @@
                       type="text"
                       (focus)="focus = true"
                       (blur)="focus = false"
+                      formControlName="name"
                     />
                   </div>
                   <div
@@ -51,6 +52,25 @@
                       type="text"
                       (focus)="focus1 = true"
                       (blur)="focus1 = false"
+                      formControlName="username"
+                    />
+                  </div>
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus3 === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-email-85"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Email"
+                      type="text"
+                      (focus)="focus3 = true"
+                      (blur)="focus3 = false"
+                      formControlName="email"
                     />
                   </div>
                   <div
@@ -68,6 +88,7 @@
                       type="password"
                       (focus)="focus2 = true"
                       (blur)="focus2 = false"
+                      formControlName="password"
                     />
                   </div>
                   <div class="form-check text-left">
@@ -78,15 +99,13 @@
                       <a href="javascript:void(0)"> terms and conditions </a> .
                     </label>
                   </div>
+                  <div class="form-group">
+                    <br>
+                      <button [disabled]="loading" class="btn btn-primary btn-round btn-lg">Login</button>
+                      <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    </div>
+                    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
                 </form>
-              </div>
-              <div class="card-footer">
-                <a
-                  class="btn btn-primary btn-round btn-lg"
-                  href="javascript:void(0)"
-                >
-                  Get Started
-                </a>
               </div>
             </div>
           </div>

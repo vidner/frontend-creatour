@@ -10,6 +10,7 @@ import {AuthenticationService} from '../../_services/authentication.service';
   templateUrl: "loginpage.component.html"
 })
 export class LoginpageComponent implements OnInit {
+  
   loginForm: FormGroup;
   loading = false;
   submitted = false;
