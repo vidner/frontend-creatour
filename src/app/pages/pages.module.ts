@@ -24,6 +24,7 @@ import { RegisterpageComponent } from "./registerpage/registerpage.component";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
 import { LoginpageComponent } from "./loginpage/loginpage.component";
 import { ProjectpageComponent } from "./projectpage/projectpage.component";
+import { ProjectdetailpageComponent } from "./projectdetailpage/projectdetailpage.component";
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ProjectpageComponent } from "./projectpage/projectpage.component";
     RegisterpageComponent,
     LandingpageComponent,
     LoginpageComponent,
-    ProjectpageComponent
+    ProjectpageComponent,
+    ProjectdetailpageComponent
   ],
   exports: [
     IndexComponent,
@@ -61,8 +63,8 @@ import { ProjectpageComponent } from "./projectpage/projectpage.component";
     RegisterpageComponent,
     LandingpageComponent,
     LoginpageComponent,
-    ProjectpageComponent
-
+    ProjectpageComponent,
+    ProjectdetailpageComponent
   ],
   providers: [ ]
 })
