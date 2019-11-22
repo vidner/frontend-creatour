@@ -3,7 +3,6 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ProjectService } from "../../_services/project.service";
 
 import { switchMap } from 'rxjs/operators';
-import { ProjectService } from '../project.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({

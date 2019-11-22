@@ -1,0 +1,196 @@
+<div class="wrapper">
+  <div class="page-header">
+    <div class="page-header-image"></div>
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 col-md-6 offset-lg-0 offset-md-3">
+            <div class="square square-7" id="square7"></div>
+            <div class="square square-8" id="square8"></div>
+            <div class="card card-register">
+              <div class="card-header">
+                <img
+                  alt="Card image"
+                  class="card-img"
+                  src="assets/img/square-purple-1.png"
+                />
+
+                <h4 class="card-title">Register</h4>
+              </div>
+              <div class="card-body">
+                <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-single-02"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Full Name"
+                      type="text"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                      formControlName="name"
+                    />
+                  </div>
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-badge"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Username"
+                      type="text"
+                      (focus)="focus1 = true"
+                      (blur)="focus1 = false"
+                      formControlName="username"
+                    />
+                  </div>
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus3 === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-email-85"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Email"
+                      type="text"
+                      (focus)="focus3 = true"
+                      (blur)="focus3 = false"
+                      formControlName="email"
+                    />
+                  </div>
+                  <div
+                    class="input-group"
+                    [ngClass]="{ 'input-group-focus': focus2 === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="tim-icons icon-lock-circle"> </i>
+                      </div>
+                    </div>
+                    <input
+                      class="form-control"
+                      placeholder="Password"
+                      type="password"
+                      (focus)="focus2 = true"
+                      (blur)="focus2 = false"
+                      formControlName="password"
+                    />
+                  </div>
+                  <div class="form-check text-left">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" />
+
+                      <span class="form-check-sign"> </span> I agree to the
+                      <a href="javascript:void(0)"> terms and conditions </a> .
+                    </label>
+                  </div>
+                  <div class="form-group">
+                    <br>
+                      <button [disabled]="loading" class="btn btn-primary btn-round btn-lg">Login</button>
+                      <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                    </div>
+                    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="register-bg"></div>
+        <div class="square square-1" id="square1"></div>
+        <div class="square square-2" id="square2"></div>
+        <div class="square square-3" id="square3"></div>
+        <div class="square square-4" id="square4"></div>
+        <div class="square square-5" id="square5"></div>
+        <div class="square square-6" id="square6"></div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"><h1 class="title">CreatOur •</h1></div>
+        <div class="col-md-3">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/home']"> Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/landing']"> Landing </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/register']"> Register </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/profile']"> Profile </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="https://creative-tim.com/contact-us?ref=blkdsa-footer">
+                Contact Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://creative-tim.com/about-us?ref=blkdsa-footer">
+                About Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://creative-tim.com/blog?ref=blkdsa-footer">
+                Blog
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://opensource.org/licenses/MIT">
+                License
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h3 class="title">Follow us:</h3>
+          <div class="btn-wrapper profile">
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
+              href="https://twitter.com/creativetim"
+              target="_blank"
+            >
+              <i class="fab fa-twitter"> </i>
+            </a>
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
+              href="https://www.facebook.com/creativetim"
+              target="_blank"
+            >
+              <i class="fab fa-facebook-square"> </i>
+            </a>
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple"
+              href="https://dribbble.com/creativetim"
+              target="_blank"
+            >
+              <i class="fab fa-dribbble"> </i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

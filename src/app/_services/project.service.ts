@@ -22,4 +22,10 @@ export class ProjectService {
     return this.http.get(this.API_URL+'/api/projects/'+projectId);
   }
 
+  // Create new project
+  // POST /api/projects
+  createProject(projectId: any): Observable<any>{
+    return this.http.post(this.API_URL+'/api/projects/');
+  }
+
 }
