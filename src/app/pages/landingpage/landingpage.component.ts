@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import Chart from "chart.js";
 
 import { ProjectService } from "../../_services/project.service";
+import { UserService } from "../../_services/user.service";
 
 @Component({
   selector: "app-landingpage",
@@ -10,15 +11,27 @@ import { ProjectService } from "../../_services/project.service";
 export class LandingpageComponent implements OnInit, OnDestroy {
   isCollapsed = true;
   recentProjects: any=[];
+  totalProject: number;
+  totalContributor: number;
+
   constructor(
-    private projectService: ProjectService
-  ) {}
+    private projectService: ProjectService,
+    private userService: UserService
+  ) {
+    this.totalProject = 0;
+    this.totalContributor = 0;
+  }
 
   ngOnInit() {
     this.projectService.getProjects()
       .subscribe(projects => {
         this.recentProjects = projects.data.slice(0,4);
-        console.log(this.recentProjects);
+        this.totalProject = projects.data.length;
+      });
+
+    this.userService.getUsers()
+      .subscribe(users => {
+        this.totalContributor = users.count;
       });
 
     var body = document.getElementsByTagName("body")[0];

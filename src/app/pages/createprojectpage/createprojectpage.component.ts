@@ -29,6 +29,20 @@ export class CreateprojectpageComponent implements OnInit  {
     {id: "Mobile Game", name: "Mobile Game"}
   ];
 
+  roles = [
+    { id: 0, role:"Marketing"},
+    { id: 1, role:"Web Developer"},
+    { id: 2, role:"Web Designer"},
+    { id: 3, role:"2D Artist"}
+    // { id: 4, role:"3D Artist"},
+    // { id: 5, role:"Unity Programer"},
+    // { id: 6, role:"Game Designer"},
+    // { id: 7, role:"C# Programmer"},
+    // { id: 8, role:"iOS Developer"},
+    // { id: 9, role:"Android Developer"},
+    // { id: 10, role:"Social Media Manager"}
+  ]
+
   constructor(
     private projectService: ProjectService,
     private formBuilder: FormBuilder,
@@ -40,7 +54,8 @@ export class CreateprojectpageComponent implements OnInit  {
     this.projectForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      category: new FormArray([])
+      category: new FormArray([]),
+      role: new FormArray([])
     });
     this.addCheckboxes();
   }
@@ -49,8 +64,13 @@ export class CreateprojectpageComponent implements OnInit  {
 
   addCheckboxes() {
       this.categories.forEach((o, i) => {
-        const control = new FormControl(i === 0); // if first item set to true, else false
-        (this.projectForm.controls.category as FormArray).push(control);
+        const category = new FormControl(i === 0); // if first item set to true, else false
+        (this.projectForm.controls.category as FormArray).push(category);
+      });
+
+      this.roles.forEach((o, i) => {
+        const role = new FormControl(i === 0);
+        (this.projectForm.controls.role as FormArray).push(role);
       });
   }
 
@@ -70,12 +90,16 @@ export class CreateprojectpageComponent implements OnInit  {
       .map((v, i) => v ? this.categories[i].id : null)
       .filter(v => v !== null);
 
+    const selectedRole = this.projectForm.value.role
+      .map((v, i) => v ? this.roles[i].id : null)
+      .filter(v => v !== null);
+
     // TODO: roleList -> Form input untuk role-role yang dibutuhkan dalam project
     let newProject = {
       "name": this.f.name.value,
       "description": this.f.description.value,
       "category": selectedCategory,
-      "roleList": [1, 2, 3]
+      "roleList": selectedRole
     }
 
     this.projectService.createProject(newProject)

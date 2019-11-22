@@ -87,7 +87,7 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-title">3,237</p>
+                          <p class="card-title">{{totalContributor}}</p>
                           <p></p>
                           <p class="card-category">Contributor</p>
                         </div>
@@ -107,52 +107,9 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-title">3,653</p>
+                          <p class="card-title">{{totalProject}}</p>
                           <p></p>
                           <p class="card-category">Projects</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6 col-sm-12 px-2 py-2">
-                <div class="card card-stats">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-5 col-md-4">
-                        <div class="icon-big text-center icon-warning">
-                          <i class="tim-icons icon-palette text-info"> </i>
-                        </div>
-                      </div>
-                      <div class="col-7 col-md-8">
-                        <div class="numbers">
-                          <p class="card-title">593</p>
-                          <p></p>
-                          <p class="card-category">Creator</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 col-sm-12 px-2 py-2">
-                <div class="card card-stats">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-5 col-md-4">
-                        <div class="icon-big text-center icon-warning">
-                          <i class="tim-icons icon-cart text-success">
-                          </i>
-                        </div>
-                      </div>
-                      <div class="col-7 col-md-8">
-                        <div class="numbers">
-                          <p class="card-title">10,783</p>
-                          <p></p>
-                          <p class="card-category">Product</p>
                         </div>
                       </div>
                     </div>
@@ -229,23 +186,12 @@
                 <div class="card-body">
                     <div class="row">
                       <div class="col-md-12 text-center">
+                        <span *ngFor="let category of project.ProjectCategories">
                           <button
                           class="btn btn-default btn-sm"
-                          > finance
+                          > {{category.category}}
                           </button>
-                          <button
-                          class="btn btn-default btn-sm"
-                          > back-end
-                          </button>
-                          <button
-                          class="btn btn-default btn-sm"
-                          > remote
-                          </button>
-                          <button
-                          class="btn btn-default btn-sm"
-                          > ez
-                          </button>
-
+                        </span>
                       </div>
                     </div>
                 </div>

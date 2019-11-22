@@ -45,11 +45,13 @@
               </div>
               <div class="card-body">
                   <div class="row">
-                    <div *ngFor="let category of project.ProjectCategories" class="col-md-12 text-center">
-                        <button
-                        class="btn btn-default btn-sm"
-                        > {{category.category}}
-                        </button>
+                    <div class="col-md-12 text-center">
+                        <span *ngFor="let category of project.ProjectCategories">
+                          <button
+                          class="btn btn-default btn-sm"
+                          > {{category.category}}
+                          </button>
+                        </span>
                     </div>
                   </div>
               </div>
@@ -57,7 +59,7 @@
                 <br>
                 <div class="col-md-10 offset-md-1" >
                     <div class="progress-container progress-danger">
-                        <span class="text"> 3/4 People Joined  </span>
+                        <span class="text"> 3/{{project.ProjectMembers.length}} People Joined  </span>
                         <progressbar class="progress-bar-danger" [value]="75">
                           <span class="progress-value"> 75% </span>
                         </progressbar>
@@ -67,7 +69,7 @@
               </div>
             </div>
             <div class="card-footer text-center">
-              <button [routerLink]="['/project', i+1]" class="btn btn-primary btn-simple">Details</button>
+              <button [routerLink]="['/project', project.id]" class="btn btn-primary btn-simple">Details</button>
             </div>
           </div>
         </div>
