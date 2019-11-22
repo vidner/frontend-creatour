@@ -24,8 +24,8 @@ export class ProjectService {
 
   // Create new project
   // POST /api/projects
-  createProject(projectId: any): Observable<any>{
-    return this.http.post(this.API_URL+'/api/projects/');
+  createProject(newProject): Observable<any>{
+    return this.http.post(this.API_URL+'/api/projects/', newProject);
   }
 
 }

@@ -61,6 +61,9 @@
             <a class="nav-link" [routerLink]="['/login']"> Login </a>
           </li>
           <li class="nav-item" *ngIf="currentUser">
+            <a class="nav-link" [routerLink]="['/create']"> My Project </a>
+          </li>
+          <li class="nav-item" *ngIf="currentUser">
             <a class="nav-link" (click)="logout()"> Logout </a>
           </li>
         </ul>

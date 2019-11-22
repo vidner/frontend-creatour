@@ -10,7 +10,9 @@ import { LandingpageComponent } from "./pages/landingpage/landingpage.component"
 import { LoginpageComponent } from "./pages/loginpage/loginpage.component";
 import { ProjectpageComponent } from "./pages/projectpage/projectpage.component";
 import { ProjectdetailpageComponent } from "./pages/projectdetailpage/projectdetailpage.component";
+import { CreateprojectpageComponent } from "./pages/createprojectpage/createprojectpage.component";
 
+// TO DO: Implementasi AuthGuard
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "landing", component: IndexComponent },
@@ -19,7 +21,8 @@ const routes: Routes = [
   { path: "home", component: LandingpageComponent },
   { path: "login", component: LoginpageComponent },
   { path: "projects", component: ProjectpageComponent },
-  { path: "project/:projectId", component: ProjectdetailpageComponent }
+  { path: "project/:projectId", component: ProjectdetailpageComponent },
+  { path: "create", component: CreateprojectpageComponent }
 ];
 
 @NgModule({
