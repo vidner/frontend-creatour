@@ -26,7 +26,7 @@
       </div>
       <br>
       <div class="row">
-        <div class="col-md-3" *ngFor="let project of projects.data">
+        <div class="col-md-3" *ngFor="let project of projects.data;let i=index">
           <br>
           <br>
           <br>
@@ -43,16 +43,44 @@
                   <hr class="line-primary" />
                 </div>
               </div>
+              <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button
+                        class="btn btn-default btn-sm"
+                        > finance
+                        </button>
+                        <button
+                        class="btn btn-default btn-sm"
+                        > back-end
+                        </button>
+                        <button
+                        class="btn btn-default btn-sm"
+                        > remote
+                        </button>
+                        <button
+                        class="btn btn-default btn-sm"
+                        > ez
+                        </button>
+                        
+                    </div>
+                  </div>
+              </div>  
               <div class="row">
-                <ul class="list-group">
-                  <li class="list-group-item">50 messages</li>
-                  <li class="list-group-item">100 emails</li>
-                  <li class="list-group-item">24/7 Support</li>
-                </ul>
+                <br>
+                <div class="col-md-10 offset-md-1" >
+                    <div class="progress-container progress-danger">
+                        <span class="text"> 3/4 People Joined  </span>
+                        <progressbar class="progress-bar-danger" [value]="75">
+                          <span class="progress-value"> 75% </span>
+                        </progressbar>
+                      </div>
+    
+                </div>
               </div>
             </div>
             <div class="card-footer text-center">
-              <button [routerLink]="['/project', project.id]" class="btn btn-primary btn-simple">Details</button>
+              <button [routerLink]="['/project', i+1]" class="btn btn-primary btn-simple">Details</button>
             </div>
           </div>
         </div>
@@ -83,77 +111,5 @@
     </div>
   </section> -->
 
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3"><h1 class="title">BLK•</h1></div>
-        <div class="col-md-3">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/home']"> Home </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/landing']"> Landing </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/register']"> Register </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/profile']"> Profile </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="https://creative-tim.com/contact-us?ref=blkdsa-footer">
-                Contact Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://creative-tim.com/about-us?ref=blkdsa-footer">
-                About Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://creative-tim.com/blog?ref=blkdsa-footer">
-                Blog
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://opensource.org/licenses/MIT">
-                License
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <h3 class="title">Follow us:</h3>
-          <div class="btn-wrapper profile">
-            <a
-              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
-              href="https://twitter.com/creativetim"
-              target="_blank"
-            >
-              <i class="fab fa-twitter"> </i>
-            </a>
-            <a
-              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
-              href="https://www.facebook.com/creativetim"
-              target="_blank"
-            >
-              <i class="fab fa-facebook-square"> </i>
-            </a>
-            <a
-              class="btn btn-icon btn-neutral btn-round btn-simple"
-              href="https://dribbble.com/creativetim"
-              target="_blank"
-            >
-              <i class="fab fa-dribbble"> </i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  
 </div>
