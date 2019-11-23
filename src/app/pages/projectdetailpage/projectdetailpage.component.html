@@ -73,27 +73,16 @@
                 <tab heading="Tags">
                     <div class="row">
                         <div class="col-md-12 text-center">
+                          <span *ngFor="let category of project.ProjectCategories">
                             <button
                             class="btn btn-default btn-sm"
-                            > finance
+                            > {{category.category}}
                             </button>
-                            <button
-                            class="btn btn-default btn-sm"
-                            > back-end
-                            </button>
-                            <button
-                            class="btn btn-default btn-sm"
-                            > remote
-                            </button>
-                            <button
-                            class="btn btn-default btn-sm"
-                            > ez
-                            </button>
-                            
+                          </span>
                         </div>
                       </div>
                 </tab>
-                
+
               </tabset>
             </div>
           </div>
