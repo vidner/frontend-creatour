@@ -31,7 +31,7 @@
           <br>
           <br>
           <br>
-          <div class="card card-coin card-plain">
+          <div class="card card-coin card-plain h-100">
             <div class="card-header">
               <img class="img-center img-fluid" src="assets/img/binomo.png" />
             </div>
@@ -57,6 +57,10 @@
               </div>
               <div class="row">
                 <br>
+
+              </div>
+            </div>
+            <div class="card-footer text-center">
                 <div class="col-md-10 offset-md-1" >
                     <div class="progress-container progress-danger">
                         <span class="text"> {{project.filled}}/{{project.count}} People Joined  </span>
@@ -64,11 +68,8 @@
                           <span class="progress-value"> {{project.filled/project.count*100 | number: 0}}% </span>
                         </progressbar>
                       </div>
-
+                      <br>
                 </div>
-              </div>
-            </div>
-            <div class="card-footer text-center">
               <button [routerLink]="['/project', project.id]" class="btn btn-primary btn-simple">Details</button>
             </div>
           </div>
