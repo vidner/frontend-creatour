@@ -7,6 +7,11 @@ import {
 } from "@angular/core";
 import { Location } from "@angular/common";
 import { DOCUMENT } from "@angular/common";
+import { Router } from '@angular/router';
+
+import { AuthenticationService } from './_services/authentication.service';
+
+import { User } from './_models/user';
 
 @Component({
   selector: "app-root",
@@ -14,11 +19,17 @@ import { DOCUMENT } from "@angular/common";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
+  currentUser: User;
+
   constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router,
     private renderer: Renderer,
     public location: Location,
     @Inject(DOCUMENT) document
-  ) {}
+  ) {
+    this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
+  }
   @HostListener("window:scroll", ["$event"])
   onWindowScroll(e) {
     if (window.pageYOffset > 100) {
@@ -37,5 +48,10 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     this.onWindowScroll(event);
+  }
+
+  logout(){
+    this.authenticationService.logout();
+    // this.router.navigate(['/login']);
   }
 }

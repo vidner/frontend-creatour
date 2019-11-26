@@ -1,69 +1,3 @@
-<nav
-  class="navbar navbar-expand-lg fixed-top navbar-transparent"
-  color-on-scroll="100"
-  id="navbar-top"
->
-  <div class="container">
-    <div class="navbar-translate">
-      <a
-        class="navbar-brand"
-        [routerLink]="['/home']"
-        placement="bottom"
-        tooltip="Designed and Coded by Creative Tim"
-      >
-        <span> CreatOur • </span> Pure Creativity
-      </a>
-      <button
-        aria-controls="navigation-index"
-        aria-label="Toggle navigation"
-        class="navbar-toggler navbar-toggler"
-        [attr.aria-expanded]="!isCollapsed"
-        (click)="isCollapsed = !isCollapsed"
-        id="navigation"
-        type="button"
-      >
-        <span class="navbar-toggler-bar bar1"> </span>
-        <span class="navbar-toggler-bar bar2"> </span>
-        <span class="navbar-toggler-bar bar3"> </span>
-      </button>
-    </div>
-    <div
-      class="navbar-collapse justify-content-end"
-      [collapse]="isCollapsed"
-      id="navigation"
-    >
-      <div class="navbar-collapse-header">
-        <div class="row">
-          <div class="col-6 collapse-brand"><a> BLK• </a></div>
-          <div class="col-6 collapse-close text-right">
-            <button
-              aria-controls="navigation-index"
-              aria-label="Toggle navigation"
-              class="navbar-toggler"
-              [attr.aria-expanded]="!isCollapsed"
-              (click)="isCollapsed = !isCollapsed"
-              id="navigation"
-              type="button"
-            >
-              <i class="tim-icons icon-simple-remove"> </i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/project']"> Project </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/register']"> Register </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']"> Login </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <div class="wrapper">
   <div class="page-header">
     <img class="path" src="assets/img/blob.png" />
@@ -89,7 +23,7 @@
             <span class="text-white"> Our </span>
           </h1>
           <p class="text-white mb-3">
-            Sebuah platform web dimana orang dapat berkolaborasi pada proyek 
+            Sebuah platform web dimana orang dapat berkolaborasi pada proyek
             dan mendapatkan imbal hasil berdasarkan kontribusi.
           </p>
           <!-- <div class="btn-wrapper mb-3">
@@ -153,7 +87,7 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-title">3,237</p>
+                          <p class="card-title">{{totalContributor}}</p>
                           <p></p>
                           <p class="card-category">Contributor</p>
                         </div>
@@ -173,52 +107,9 @@
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
-                          <p class="card-title">3,653</p>
+                          <p class="card-title">{{totalProject}}</p>
                           <p></p>
                           <p class="card-category">Projects</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6 col-sm-12 px-2 py-2">
-                <div class="card card-stats">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-5 col-md-4">
-                        <div class="icon-big text-center icon-warning">
-                          <i class="tim-icons icon-palette text-info"> </i>
-                        </div>
-                      </div>
-                      <div class="col-7 col-md-8">
-                        <div class="numbers">
-                          <p class="card-title">593</p>
-                          <p></p>
-                          <p class="card-category">Creator</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 col-sm-12 px-2 py-2">
-                <div class="card card-stats">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-5 col-md-4">
-                        <div class="icon-big text-center icon-warning">
-                          <i class="tim-icons icon-cart text-success">
-                          </i>
-                        </div>
-                      </div>
-                      <div class="col-7 col-md-8">
-                        <div class="numbers">
-                          <p class="card-title">10,783</p>
-                          <p></p>
-                          <p class="card-category">Product</p>
                         </div>
                       </div>
                     </div>
@@ -269,89 +160,58 @@
           <hr class="line-info" />
 
           <h1>
-            Choose the coin
-            <span class="text-info"> that fits your needs </span>
+            Recent
+            <span class="text-info"> Projects</span>
           </h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3" *ngFor="let project of recentProjects">
+          <br>
+          <br>
+          <br>
+          <br>
           <div class="card card-coin card-plain">
-            <div class="card-header">
-              <img class="img-center img-fluid" src="assets/img/bitcoin.png" />
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">Light Coin</h4>
-                  <span> Plan </span>
-                  <hr class="line-primary" />
+              <div class="card-header">
+                <img class="img-center img-fluid" src="assets/img/binomo.png" />
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <h4 class="text-uppercase">{{project.name}}</h4>
+                    <span> {{project.description}} </span>
+                    <hr class="line-primary" />
+                  </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12 text-center">
+                        <span *ngFor="let category of project.ProjectCategories">
+                          <button
+                          class="btn btn-default btn-sm"
+                          > {{category.category}}
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                  <br>
+                  <div class="col-md-10 offset-md-1" >
+                      <div class="progress-container progress-danger">
+                          <span class="text"> 3/4 People Joined  </span>
+                          <progressbar class="progress-bar-danger" [value]="75">
+                            <span class="progress-value"> 75% </span>
+                          </progressbar>
+                        </div>
+
+                  </div>
                 </div>
               </div>
-              <div class="row">
-                <ul class="list-group">
-                  <li class="list-group-item">50 messages</li>
-                  <li class="list-group-item">100 emails</li>
-                  <li class="list-group-item">24/7 Support</li>
-                </ul>
+              <div class="card-footer text-center">
+                <button [routerLink]="['/project', project.id]" class="btn btn-primary btn-simple">Details</button>
               </div>
             </div>
-            <div class="card-footer text-center">
-              <button class="btn btn-primary btn-simple">Get plan</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-coin card-plain">
-            <div class="card-header">
-              <img class="img-center img-fluid" src="assets/img/etherum.png" />
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">Dark Coin</h4>
-                  <span> Plan </span>
-                  <hr class="line-success" />
-                </div>
-              </div>
-              <div class="row">
-                <ul class="list-group">
-                  <li class="list-group-item">150 messages</li>
-                  <li class="list-group-item">1000 emails</li>
-                  <li class="list-group-item">24/7 Support</li>
-                </ul>
-              </div>
-            </div>
-            <div class="card-footer text-center">
-              <button class="btn btn-success btn-simple">Get plan</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-coin card-plain">
-            <div class="card-header">
-              <img class="img-center img-fluid" src="assets/img/ripp.png" />
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">Bright Coin</h4>
-                  <span> Plan </span>
-                  <hr class="line-info" />
-                </div>
-              </div>
-              <div class="row">
-                <ul class="list-group">
-                  <li class="list-group-item">350 messages</li>
-                  <li class="list-group-item">10K emails</li>
-                  <li class="list-group-item">24/7 Support</li>
-                </ul>
-              </div>
-            </div>
-            <div class="card-footer text-center">
-              <button class="btn btn-info btn-simple">Get plan</button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

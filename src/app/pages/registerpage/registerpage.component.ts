@@ -1,87 +1,68 @@
 import { Component, OnInit, OnDestroy, HostListener } from "@angular/core";
+import {Router, ActivatedRoute} from '@angular/router';
+import {Form, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {first} from 'rxjs/operators';
+
+import {AuthenticationService} from '../../_services/authentication.service';
 
 @Component({
   selector: "app-registerpage",
   templateUrl: "registerpage.component.html"
 })
-export class RegisterpageComponent implements OnInit, OnDestroy {
-  isCollapsed = true;
-  focus;
-  focus1;
-  focus2;
-  constructor() {}
-  @HostListener("document:mousemove", ["$event"])
-  onMouseMove(e) {
-    var squares1 = document.getElementById("square1");
-    var squares2 = document.getElementById("square2");
-    var squares3 = document.getElementById("square3");
-    var squares4 = document.getElementById("square4");
-    var squares5 = document.getElementById("square5");
-    var squares6 = document.getElementById("square6");
-    var squares7 = document.getElementById("square7");
-    var squares8 = document.getElementById("square8");
+export class RegisterpageComponent implements OnInit  {
 
-    var posX = e.clientX - window.innerWidth / 2;
-    var posY = e.clientY - window.innerWidth / 6;
+  
+  registerForm: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  error = '';
 
-    squares1.style.transform =
-      "perspective(500px) rotateY(" +
-      posX * 0.05 +
-      "deg) rotateX(" +
-      posY * -0.05 +
-      "deg)";
-    squares2.style.transform =
-      "perspective(500px) rotateY(" +
-      posX * 0.05 +
-      "deg) rotateX(" +
-      posY * -0.05 +
-      "deg)";
-    squares3.style.transform =
-      "perspective(500px) rotateY(" +
-      posX * 0.05 +
-      "deg) rotateX(" +
-      posY * -0.05 +
-      "deg)";
-    squares4.style.transform =
-      "perspective(500px) rotateY(" +
-      posX * 0.05 +
-      "deg) rotateX(" +
-      posY * -0.05 +
-      "deg)";
-    squares5.style.transform =
-      "perspective(500px) rotateY(" +
-      posX * 0.05 +
-      "deg) rotateX(" +
-      posY * -0.05 +
-      "deg)";
-    squares6.style.transform =
-      "perspective(500px) rotateY(" +
-      posX * 0.05 +
-      "deg) rotateX(" +
-      posY * -0.05 +
-      "deg)";
-    squares7.style.transform =
-      "perspective(500px) rotateY(" +
-      posX * 0.02 +
-      "deg) rotateX(" +
-      posY * -0.02 +
-      "deg)";
-    squares8.style.transform =
-      "perspective(500px) rotateY(" +
-      posX * 0.02 +
-      "deg) rotateX(" +
-      posY * -0.02 +
-      "deg)";
-  }
-
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) { }
+ 
   ngOnInit() {
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.add("register-page");
+    this.registerForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      name: ['', Validators.required],
+      email: ['', Validators.required]
+    });
 
-    this.onMouseMove(event);
+    // reset login status
+    this.authenticationService.logout();
+
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-  ngOnDestroy() {
-    var body = document.getElementsByTagName("body")[0];
-    body.classList.remove("register-page");
-  }
+
+  get f() { return this.registerForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // reset alerts on submit
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+
+    this.loading = true;
+    this.authenticationService.register(this.f.username.value, this.f.password.value,this.f.name.value, this.f.email.value)
+        .pipe(first())
+        .subscribe(
+            data => {
+                this.router.navigate(['/login']);
+            },
+            error => {
+                this.error = error;
+                this.loading = false;
+            });
+}
+
 }
