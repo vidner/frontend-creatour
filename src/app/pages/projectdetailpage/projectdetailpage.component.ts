@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 
 import { ProjectService } from "../../_services/project.service";
 
+
 import { switchMap } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -12,6 +13,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class ProjectdetailpageComponent implements OnInit, OnDestroy {
   isCollapsed = true;
   project: any={};
+  recentProjects: any=[];
+  totalProject: number;
+  totalContributor: number;
   constructor(
     private projectService: ProjectService,
     private route: ActivatedRoute,
@@ -19,6 +23,12 @@ export class ProjectdetailpageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.projectService.getProjects()
+        .subscribe(projects => {
+          this.recentProjects = projects.data.slice(0,4);
+          this.totalProject = projects.data.length;
+        });
+
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) => {
        return this.projectService.getProjectById(+params.get('projectId'));
