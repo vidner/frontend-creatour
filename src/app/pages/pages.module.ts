@@ -26,6 +26,8 @@ import { LoginpageComponent } from "./loginpage/loginpage.component";
 import { ProjectpageComponent } from "./projectpage/projectpage.component";
 import { ProjectdetailpageComponent } from "./projectdetailpage/projectdetailpage.component";
 import { CreateprojectpageComponent } from "./createprojectpage/createprojectpage.component";
+import {JwtInterceptor} from '../_helpers/jwt.interceptor';
+import {ErrorInterceptor} from '../_helpers/error.interceptor';
 
 @NgModule({
   imports: [
@@ -68,6 +70,10 @@ import { CreateprojectpageComponent } from "./createprojectpage/createprojectpag
     ProjectdetailpageComponent,
     CreateprojectpageComponent
   ],
-  providers: [ ]
+  providers: [
+      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ]
 })
-export class PagesModule {}
+export class PagesModule {
+}

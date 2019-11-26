@@ -3,6 +3,7 @@ import Chart from "chart.js";
 
 import { ProjectService } from "../../_services/project.service";
 import { UserService } from "../../_services/user.service";
+import get = Reflect.get;
 
 @Component({
   selector: "app-landingpage",
@@ -28,6 +29,7 @@ export class LandingpageComponent implements OnInit, OnDestroy {
         this.recentProjects = projects.data.slice(0,4);
         this.totalProject = projects.data.length;
       });
+
 
     this.userService.getUsers()
       .subscribe(users => {
