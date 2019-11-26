@@ -59,10 +59,11 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><img class="img-center img-fluid" style="width:60px" src="assets/img/mike.jpg" /></td>
-                          <td>Michael Jordan</td>
+                        <tr *ngFor="let contributor of project.ProjectMembers">
+                          <td *ngIf="contributor.userId!==null"><img class="img-center img-fluid" style="width:60px" src="assets/img/muka.png" /></td>
+                          <td *ngIf="contributor.userId!==null">{{contributor.User.name}}</td>
                         </tr>
+                        <!-- contoh doang -->
                         <tr>
                             <td><img class="img-center img-fluid" style="width:60px" src="assets/img/budi.png" /></td>
                             <td>Budi Setiawan</td>
@@ -75,9 +76,8 @@
                     <div class="row">
                         <div class="col-md-12 text-center">
                           <span *ngFor="let category of project.ProjectCategories">
-                            <button
-                            class="btn btn-default btn-sm"
-                            > {{category.category}}
+                            <button class="btn btn-info btn-sm">
+                              {{category.category}}
                             </button>
                           </span>
                         </div>
@@ -135,20 +135,29 @@
         </div>
         <div class="col-md-5">
           <h1 class="profile-title text-left">Description</h1>
-          <h5 class="text-on-back">02</h5>
+          <h5 class="text-on-back">01</h5>
           <p class="profile-description text-left">
             {{project.description}}
           </p>
-          <div class="btn-wrapper pt-3">
-            <button
-              class="btn btn-simple btn-danger mr-1"
-              href="javascript:void(0)"
-            >
-              <i class="tim-icons icon-book-bookmark"> </i> Bookmark
-            </button>
-            <button class="btn btn-simple btn-info" href="javascript:void(0)">
-              <i class="tim-icons icon-bulb-63"> </i> Check it!
-            </button>
+          <br>
+          <div *ngIf="members">
+            <hr class="line-primary"/>
+              <h5>Join Us</h5>
+            <hr class="line-primary"/>
+            <div class="btn-wrapper pt-3">
+              <button class="btn btn-simple btn-danger mr-1" href="javascript:void(0)">
+                Slack
+              </button>
+              <button class="btn btn-simple btn-info mr-1" href="javascript:void(0)">
+                Trello
+              </button>
+              <button class="btn btn-simple btn-default mr-1" href="javascript:void(0)">
+                Github
+              </button>
+              <button class="btn btn-simple btn-success" href="javascript:void(0)">
+                Telegram
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -161,71 +170,8 @@
           <div class="card card-plain">
             <div class="card-header">
               <h1 class="profile-title text-left">Roles</h1>
-              <h5 class="text-on-back">03</h5>
+              <h5 class="text-on-back">02</h5>
             </div>
-<!--            <div class="card-body">-->
-<!--              <form>-->
-<!--                <div class="row">-->
-<!--                  <div class="col-md-6">-->
-<!--                    <div class="form-group">-->
-<!--                      <label> Your Name </label>-->
-<!--                      <input class="form-control" type="text" value="Mike" />-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="col-md-6">-->
-<!--                    <div class="form-group">-->
-<!--                      <label> Email address </label>-->
-<!--                      <input-->
-<!--                        class="form-control"-->
-<!--                        placeholder="mike@email.com"-->
-<!--                        type="email"-->
-<!--                      />-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="row">-->
-<!--                  <div class="col-md-6">-->
-<!--                    <div class="form-group">-->
-<!--                      <label> Phone </label>-->
-<!--                      <input-->
-<!--                        class="form-control"-->
-<!--                        type="text"-->
-<!--                        value="001-12321345"-->
-<!--                      />-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="col-md-6">-->
-<!--                    <div class="form-group">-->
-<!--                      <label> Company </label>-->
-<!--                      <input-->
-<!--                        class="form-control"-->
-<!--                        type="text"-->
-<!--                        value="CreativeTim"-->
-<!--                      />-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <div class="row">-->
-<!--                  <div class="col-md-12">-->
-<!--                    <div class="form-group">-->
-<!--                      <label> Message </label>-->
-<!--                      <input-->
-<!--                        class="form-control"-->
-<!--                        placeholder="Hello there!"-->
-<!--                        type="text"-->
-<!--                      />-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <button-->
-<!--                  class="btn btn-danger btn-round float-right"-->
-<!--                  placement="right"-->
-<!--                  type="submit"-->
-<!--                >-->
-<!--                  Send text-->
-<!--                </button>-->
-<!--              </form>-->
-<!--            </div>-->
           </div>
         </div>
 <!--        <div class="col-md-4 ml-auto">-->
@@ -261,8 +207,10 @@
 <!--          </div>-->
 <!--        </div>-->
       </div>
-      <div class="row" style="display: flex; flex-direction: row; justify-content: center">
-        <div class="col-md-3">
+      <div class="row"
+           style="display: flex; flex-direction: row; justify-content: center"
+           >
+        <div class="col-md-3" *ngFor="let role of project.ProjectMembers">
           <br>
           <br>
           <br>
@@ -273,33 +221,81 @@
             </div>
             <div class="card-body">
               <div class="row">
-                <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">Website Developer</h4>
-                  <span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel elit sit amet felis
-                    sagittis pellentesque. Donec consectetur vestibulum fermentum. Vivamus maximus libero eget
-                    scelerisque sollicitudin. Proin tempus diam et est feugiat. </span>
+                <div class="col-md-12 text-center" *ngIf="role.role===0">
+                  <h4 class="text-uppercase">Marketing</h4>
                   <hr class="line-primary" />
                 </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===1">
+                  <h4 class="text-uppercase">Web Developer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===2">
+                  <h4 class="text-uppercase">Web Designer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===3">
+                  <h4 class="text-uppercase">2D Artist</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===4">
+                  <h4 class="text-uppercase">3D Artist</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===5">
+                  <h4 class="text-uppercase">Unity Programmer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===6">
+                  <h4 class="text-uppercase">Game Designer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===7">
+                  <h4 class="text-uppercase">C# Programmer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===8">
+                  <h4 class="text-uppercase">iOS Developer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===9">
+                  <h4 class="text-uppercase">Android Developer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===10">
+                  <h4 class="text-uppercase">Social Media Manager</h4>
+                  <hr class="line-primary" />
+                </div>
+
               </div>
               <div class="row">
                 <br>
                 <div class="col-md-10 offset-md-1" >
-                  <div class="progress-container progress-danger">
+                  <div class="progress-container progress-danger" *ngIf="role.userId===null">
                     <span class="text"> Available  </span>
                     <progressbar class="progress-bar-danger" [value]="0">
                       <span class="progress-value"> 0 </span>
+                    </progressbar>
+                  </div>
+                  <div class="progress-container progress-danger" *ngIf="role.userId">
+                    <span class="text"> {{role.User.name}}  </span>
+                    <progressbar class="progress-bar-danger" [value]="100">
+                      <span class="progress-value"> 1 </span>
                     </progressbar>
                   </div>
 
                 </div>
               </div>
             </div>
-            <div class="card-footer text-center">
-              <button onclick="location.href='http://www.blogcdn.com/slideshows/images/slides/261/840/2/S2618402/slug/l/mens-male-plastic-surgery-fails-07-igor-grichka-getty-483056855-1.jpg'" class="btn btn-primary btn-simple">Join</button>
+            <div *ngIf="currentUser && !members">
+              <div class="card-footer text-center" *ngIf="role.userId===null">
+                <button onclick="location.href='http://www.blogcdn.com/slideshows/images/slides/261/840/2/S2618402/slug/l/mens-male-plastic-surgery-fails-07-igor-grichka-getty-483056855-1.jpg'"
+                        class="btn btn-primary btn-simple">Join
+                </button>
+              </div>
             </div>
           </div>
         </div>
-
+        <!-- Contoh doang -->
         <div class="col-md-3">
           <br>
           <br>
@@ -312,10 +308,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">3D Animator</h4>
-                  <span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel elit sit amet felis
-                    sagittis pellentesque. Donec consectetur vestibulum fermentum. Vivamus maximus libero eget
-                    scelerisque sollicitudin. Proin tempus diam et est feugiat. </span>
+                  <h4 class="text-uppercase">Pokemon</h4>
                   <hr class="line-primary" />
                 </div>
               </div>
@@ -338,43 +331,6 @@
           </div>
         </div>
 
-        <div class="col-md-3">
-          <br>
-          <br>
-          <br>
-          <br>
-          <div class="card card-coin card-plain">
-            <div class="card-header">
-              <img class="img-center img-fluid" src="assets/img/lol.jpg" />
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">Cute Department</h4>
-                  <span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel elit sit amet felis
-                    sagittis pellentesque. Donec consectetur vestibulum fermentum. Vivamus maximus libero eget
-                    scelerisque sollicitudin. Proin tempus diam et est feugiat. </span>
-                  <hr class="line-primary" />
-                </div>
-              </div>
-              <div class="row">
-                <br>
-                <div class="col-md-10 offset-md-1" >
-                  <div class="progress-container progress-danger">
-                    <span class="text"> Michael Jordan  </span>
-                    <progressbar class="progress-bar-danger" [value]="100">
-                      <span class="progress-value"> 1 </span>
-                    </progressbar>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <!--            <div class="card-footer text-center">-->
-            <!--              <button onclick="location.href='http://www.blogcdn.com/slideshows/images/slides/261/840/2/S2618402/slug/l/mens-male-plastic-surgery-fails-07-igor-grichka-getty-483056855-1.jpg'" class="btn btn-primary btn-simple">Join</button>-->
-            <!--            </div>-->
-          </div>
-        </div>
       </div>
     </div>
   </section>
