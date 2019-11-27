@@ -63,4 +63,9 @@ export class ProjectdetailpageComponent implements OnInit, OnDestroy {
         body.classList.remove('profile-page');
     }
 
+    joinProject(role: number){
+      console.log(role);
+      let projectId = +this.route.snapshot.paramMap.get('id');
+    }
+
 }

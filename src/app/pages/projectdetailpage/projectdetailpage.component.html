@@ -288,8 +288,7 @@
             </div>
             <div *ngIf="currentUser && !members">
               <div class="card-footer text-center" *ngIf="role.userId===null">
-                <button onclick="location.href='http://www.blogcdn.com/slideshows/images/slides/261/840/2/S2618402/slug/l/mens-male-plastic-surgery-fails-07-igor-grichka-getty-483056855-1.jpg'"
-                        class="btn btn-primary btn-simple">Join
+                <button (click)="joinProject(role.role)">Join
                 </button>
               </div>
             </div>
