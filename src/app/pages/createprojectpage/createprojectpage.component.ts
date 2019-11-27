@@ -1,18 +1,21 @@
 import { Component, OnInit, OnDestroy, HostListener } from "@angular/core";
 import {Router, ActivatedRoute} from '@angular/router';
 import {Form, FormBuilder, FormGroup, Validators, FormArray, FormControl} from '@angular/forms';
-import {first} from 'rxjs/operators';
+import {first, map} from 'rxjs/operators';
 
 import {ProjectService} from '../../_services/project.service';
+import {User} from '../../_models/user';
+import {AuthenticationService} from '../../_services/authentication.service';
 
 @Component({
   selector: "app-createprojectpage",
   templateUrl: "createprojectpage.component.html"
 })
 export class CreateprojectpageComponent implements OnInit  {
-
-
+  currentUser: User;
   projectForm: FormGroup;
+  myProjects: any;
+  joinedProjects: any;
   loading = false;
   submitted = false;
   returnUrl: string;
@@ -48,9 +51,16 @@ export class CreateprojectpageComponent implements OnInit  {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-  ) { }
+    private authenticationService: AuthenticationService,
+  ) {
+    this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
+    this.myProjects = [];
+    this.joinedProjects = [];
+  }
 
   ngOnInit() {
+    // console.log(this.currentUser);
+
     this.projectForm = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -58,6 +68,35 @@ export class CreateprojectpageComponent implements OnInit  {
       role: new FormArray([])
     });
     this.addCheckboxes();
+    this.projectService.getMyProject()
+        .pipe(map(projects => projects.data.map(project => ({
+          id: project.id,
+          description: project.description,
+          name: project.name,
+          count: project.ProjectMembers.length,
+          ProjectMembers: project.ProjectMembers,
+          ProjectCategories: project.ProjectCategories,
+          filled: project.ProjectMembers.filter(obj => !Object.values(obj).includes(null)).length
+        }))))
+        .subscribe(projects => {
+          this.myProjects = projects;
+          console.log(this.myProjects);
+        });
+
+    this.projectService.getJoinedProject()
+        .pipe(map(projects => projects.data.map(project => ({
+          id: project.id,
+          description: project.description,
+          name: project.name,
+          count: project.ProjectMembers.length,
+          ProjectMembers: project.ProjectMembers,
+          ProjectCategories: project.ProjectCategories,
+          filled: project.ProjectMembers.filter(obj => !Object.values(obj).includes(null)).length
+        }))))
+        .subscribe(projects => {
+          this.joinedProjects = projects;
+          console.log(this.joinedProjects);
+        });
   }
 
   get f() { return this.projectForm.controls; }

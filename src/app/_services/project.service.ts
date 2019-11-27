@@ -32,6 +32,10 @@ export class ProjectService {
     return this.http.get(this.API_URL+'/api/projects/my/projects');
   }
 
+  getJoinedProject(): Observable<any>{
+    return this.http.get(this.API_URL+'/api/projects/member/projects');
+  }
+
   joinProjectById(roleId: number, projectId: number): Observable<any>{
     return this.http.post(this.API_URL+`/api/projects/${projectId}/join`, {role: roleId});
   }
