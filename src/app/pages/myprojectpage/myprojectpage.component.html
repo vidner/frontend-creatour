@@ -1,0 +1,129 @@
+<div class="wrapper">
+    <section class="section section-lg">
+    <img class="path" src="assets/img/path3.png" />
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <hr class="line-info" />
+          <h1 align="center">Find Project</h1>
+            <div class="col">
+              <div class="input-group">
+                <input
+                  class="form-control"
+                  placeholder="Right Nucleo Icon"
+                  type="text"
+                />
+
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i class="tim-icons icon-zoom-split"> </i>
+                  </span>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-3" *ngFor="let project of projects;let i=index">
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="card card-coin card-plain h-100">
+            <div class="card-header">
+              <img class="img-center img-fluid" src="assets/img/binomo.png" />
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h4 class="text-uppercase">{{project.name}}</h4>
+                  <span> {{project.description}} </span>
+                  <hr class="line-primary" />
+                </div>
+              </div>
+              <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                        <span *ngFor="let category of project.ProjectCategories">
+                          <button
+                          class="btn btn-info btn-sm"
+                          > {{category.category}}
+                          </button>
+                        </span>
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                <br>
+
+              </div>
+            </div>
+            <div class="card-footer text-center">
+                <div class="col-md-10 offset-md-1" >
+                    <div class="progress-container progress-danger">
+                        <span class="text"> {{project.filled}}/{{project.count}} People Joined  </span>
+                        <progressbar class="progress-bar-danger" [value]="project.filled/project.count*100">
+                          <span class="progress-value"> {{project.filled/project.count*100 | number: 0}}% </span>
+                        </progressbar>
+                      </div>
+                      <br>
+                </div>
+              <button [routerLink]="['/project', project.id]" class="btn btn-primary btn-simple">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="card card-coin card-plain h-100">
+            <div class="card-header">
+              <img class="img-center img-fluid" src="assets/img/muka.png" />
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h4 class="text-uppercase">Tambah Project Baru</h4>
+                  <span> <button [routerLink]="['/create']" class="btn btn-primary btn-simple">Buat Baru</button></span>
+                  <hr class="line-primary" />
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!--   <section class="section section-lg">
+    <img class="path" src="assets/img/path4.png" />
+
+    <img class="path2" src="assets/img/path2.png" />
+
+    <div class="col-md-12">
+      <div class="card card-chart card-plain">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-sm-6 text-left">
+              <hr class="line-primary" />
+
+              <h5 class="card-category">Total Investments</h5>
+              <h2 class="card-title">Performance</h2>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chart-area"><canvas id="chartBig"> </canvas></div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+</div>

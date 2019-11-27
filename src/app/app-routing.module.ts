@@ -11,6 +11,7 @@ import { LoginpageComponent } from "./pages/loginpage/loginpage.component";
 import { ProjectpageComponent } from "./pages/projectpage/projectpage.component";
 import { ProjectdetailpageComponent } from "./pages/projectdetailpage/projectdetailpage.component";
 import { CreateprojectpageComponent } from "./pages/createprojectpage/createprojectpage.component";
+import {MyprojectpageComponent} from './pages/myprojectpage/myprojectpage.component';
 
 // TO DO: Implementasi AuthGuard
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: "login", component: LoginpageComponent },
   { path: "projects", component: ProjectpageComponent },
   { path: "project/:projectId", component: ProjectdetailpageComponent },
-  { path: "create", component: CreateprojectpageComponent }
+  { path: "create", component: CreateprojectpageComponent },
+  { path: "myprojects", component: MyprojectpageComponent}
 ];
 
 @NgModule({

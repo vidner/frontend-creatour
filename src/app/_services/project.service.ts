@@ -28,4 +28,8 @@ export class ProjectService {
     return this.http.post(this.API_URL+'/api/projects/', newProject);
   }
 
+  getMyProject(): Observable<any>{
+    return this.http.get(this.API_URL+'/api/projects/my/projects');
+  }
+
 }
