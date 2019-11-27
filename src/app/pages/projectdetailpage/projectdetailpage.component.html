@@ -288,7 +288,7 @@
             </div>
             <div *ngIf="currentUser && !members">
               <div class="card-footer text-center" *ngIf="role.userId===null">
-                <button (click)="joinProject(role.role)">Join
+                <button class="btn btn-primary btn-simple" (click)="joinProject(role.role)">Join
                 </button>
               </div>
             </div>
