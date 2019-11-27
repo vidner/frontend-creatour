@@ -45,12 +45,14 @@ export class ProjectdetailpageComponent implements OnInit, OnDestroy {
             this.project = project.data;
             console.log(this.project);
 
-            const check = this.project.ProjectMembers.find(x => x.userId === this.currentUser.user.id);
-            console.log(check);
-            if (check !== undefined) {
-                this.members = true;
+            if (this.currentUser) {
+                // @ts-ignore
+                const check = this.project.ProjectMembers.find(x => x.userId === this.currentUser.user.id);
+                console.log(check);
+                if (check !== undefined) {
+                    this.members = true;
+                }
             }
-
             console.log(this.members);
             // console.log(this.currentUser.user.id);
         });
