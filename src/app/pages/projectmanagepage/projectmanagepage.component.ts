@@ -37,6 +37,8 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
         this.authenticationService.currentUser.subscribe(user => this.currentUser = user);
     }
 
+    get f() { return this.projectForm.controls; }
+
     ngOnInit() {
         this.projectService.getProjects()
             .subscribe(projects => {
@@ -50,7 +52,6 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
             github: [''],
             trello: [''],
             slack: [''],
-
         });
 
         this.route.paramMap.pipe(
@@ -58,7 +59,6 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
                 return this.projectService.getProjectById(+params.get('projectId'));
             })).subscribe(project => {
             this.project = project.data;
-            console.log(this.project);
 
             if (this.currentUser) {
                 // @ts-ignore
@@ -85,7 +85,12 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
                 }
             });
             this.rolesAvail = empty;
-            console.log(this.rolesAvail);
+            this.projectForm.controls['name'].setValue(this.project.name);
+            this.projectForm.controls['description'].setValue(this.project.description);
+            this.projectForm.controls['github'].setValue(this.project.github);
+            this.projectForm.controls['slack'].setValue(this.project.slack);
+            this.projectForm.controls['trello'].setValue(this.project.trello);
+
             // console.log(this.members);
             // console.log(this.currentUser.user.id);
         });
@@ -102,17 +107,19 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
     }
 
     onSubmit() {
+        console.log("test");
         // this.submitted = true;
-        //
-        // // reset alerts on submit
+
+        // reset alerts on submit
         //
         // // stop here if form is invalid
         // if (this.projectForm.invalid) {
         //     return;
         // }
-        //
+
         // this.loading = true;
-        //
+
+
         // const selectedCategory = this.projectForm.value.category
         //     .map((v, i) => v ? this.categories[i].id : null)
         //     .filter(v => v !== null);
@@ -120,30 +127,34 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
         // const selectedRole = this.projectForm.value.role
         //     .map((v, i) => v ? this.roles[i].id : null)
         //     .filter(v => v !== null);
-        //
-        // // TODO: roleList -> Form input untuk role-role yang dibutuhkan dalam project
-        // let newProject = {
-        //     "name": this.f.name.value,
-        //     "description": this.f.description.value,
-        //     "category": selectedCategory,
-        //     "roleList": selectedRole
-        // }
-        // this.projectService.createProject(newProject)
-        //     .subscribe(
-        //         data => {
-        //             this.loading = false;
-        //             window.location.reload();
-        //         },
-        //         error => {
-        //             this.error = error;
-        //             this.loading = false;
-        //         });
+
+        // TODO: roleList -> Form input untuk role-role yang dibutuhkan dalam project
+        let updatedProject = {
+            "name": this.f.name.value,
+            "description": this.f.description.value,
+            "trelloLink": this.f.trello.value,
+            "githubLink": this.f.github.value,
+            "slackLink": this.f.slack.value
+        }
+
+        let projectId = this.route.snapshot.paramMap.get('projectId');
+
+        this.projectService.updateProjectById(projectId, updatedProject)
+            .subscribe(
+                data => {
+                    console.log(data);
+                    window.location.reload();
+                },
+                error => {
+                    // this.error = error;
+                    // this.loading = false;
+                });
     }
 
-    newRole()
-    {
+    newRole(){
 
     }
+
     delRole(id){
         this.projectService.deleteRole(id)
             .subscribe(data => {

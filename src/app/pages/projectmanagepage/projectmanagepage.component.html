@@ -33,7 +33,7 @@
                 </div>
                 <input
                         class="form-control"
-                        value="{{project.name}}"
+                        [value]="project.name"
                         type="text"
                         (focus)="focus = true"
                         (blur)="focus = false"
@@ -53,7 +53,7 @@
 
                 <input
                         class="form-control"
-                        value="{{project.description}}"
+                        [value]="project.description"
                         type="text"
                         (focus)="focus1 = true"
                         (blur)="focus1 = false"
