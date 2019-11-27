@@ -1,0 +1,389 @@
+<div class="wrapper">
+  <div class="page-header">
+    <img class="dots" src="assets/img/dots.png" />
+
+    <img class="path" src="assets/img/path4.png" />
+
+    <form class="form" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <div class="container align-items-center">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <h1 class="profile-title text-left">
+            {{project.name}}
+          </h1>
+          <div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+          <div class="card card-coin card-plain">
+            <div class="card-header">
+              <img
+                class="img-center img-fluid rounded-circle"
+                src="assets/img/binomo.png"
+              />
+
+              <h4 class="title">Overview</h4>
+            </div>
+            <div class="card-body">
+              <tabset
+                class="nav-tabs-danger justify-content-center tab-subcategories"
+              >
+              <tab heading="Contributor">
+                  <div class="table-responsive">
+                    <table class="table tablesorter" id="plain-table">
+                      <thead class="text-danger">
+                        <tr>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let contributor of project.ProjectMembers">
+                          <td *ngIf="contributor.userId!==null"><img class="img-center img-fluid" style="width:60px" src="assets/img/muka.png" /></td>
+                          <td *ngIf="contributor.userId!==null">{{contributor.User.name}}</td>
+                        </tr>
+                        <!-- contoh doang -->
+                        <tr>
+                            <td><img class="img-center img-fluid" style="width:60px" src="assets/img/budi.png" /></td>
+                            <td>Budi Setiawan</td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </tab>
+                <tab heading="Tags">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                          <span *ngFor="let category of project.ProjectCategories">
+                            <button class="btn btn-info btn-sm">
+                              {{category.category}}
+                            </button>
+                          </span>
+                        </div>
+                      </div>
+                </tab>
+
+              </tabset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-md-6">
+          <div class="row justify-content-between align-items-center">
+            <carousel [showIndicators]="true">
+              <slide>
+                <img
+                  alt="First slide"
+                  class="d-block"
+                  src="assets/img/denys.jpg"
+                />
+
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Big City Life, United States</h5>
+                </div>
+              </slide>
+              <slide>
+                <img
+                  alt="Second slide"
+                  class="d-block"
+                  src="assets/img/fabien-bazanegue.jpg"
+                />
+
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Somewhere Beyond, United States</h5>
+                </div>
+              </slide>
+              <slide>
+                <img
+                  alt="Third slide"
+                  class="d-block"
+                  src="assets/img/mark-finn.jpg"
+                />
+
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Stocks, United States</h5>
+                </div>
+              </slide>
+            </carousel>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <h1 class="profile-title text-left">Description</h1>
+          <h5 class="text-on-back">01</h5>
+          <p class="profile-description text-left">
+            {{project.description}}
+          </p>
+
+          <br>
+          <div *ngIf="members">
+            <hr class="line-primary"/>
+              <h5>Join Us</h5>
+            <hr class="line-primary"/>
+            <div class="btn-wrapper pt-3">
+              <button class="btn btn-simple btn-danger mr-1" href="javascript:void(0)">
+                Slack
+              </button>
+              <button class="btn btn-simple btn-info mr-1" href="javascript:void(0)">
+                Trello
+              </button>
+              <button class="btn btn-simple btn-default mr-1" href="javascript:void(0)">
+                Github
+              </button>
+              <button class="btn btn-simple btn-success" href="javascript:void(0)">
+                Telegram
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-plain">
+            <div class="card-header">
+              <h1 class="profile-title text-left">Roles</h1>
+              <h5 class="text-on-back">02</h5>
+            </div>
+          </div>
+        </div>
+<!--        <div class="col-md-4 ml-auto">-->
+<!--          <div class="info info-horizontal">-->
+<!--            <div class="icon icon-danger">-->
+<!--              <i class="tim-icons icon-square-pin"> </i>-->
+<!--            </div>-->
+<!--            <div class="description">-->
+<!--              <h4 class="info-title">Find us at the office</h4>-->
+<!--              <p>-->
+<!--                Bld Mihail Kogalniceanu, nr. 8, <br />-->
+
+<!--                7652 Bucharest, <br />-->
+
+<!--                Romania-->
+<!--              </p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="info info-horizontal">-->
+<!--            <div class="icon icon-danger">-->
+<!--              <i class="tim-icons icon-mobile"> </i>-->
+<!--            </div>-->
+<!--            <div class="description">-->
+<!--              <h4 class="info-title">Give us a ring</h4>-->
+<!--              <p>-->
+<!--                Michael Jordan <br />-->
+
+<!--                +40 762 321 762 <br />-->
+
+<!--                Mon - Fri, 8:00-22:00-->
+<!--              </p>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+      <div class="row"
+           style="display: flex; flex-direction: row; justify-content: center"
+           >
+        <div class="col-md-3" *ngFor="let role of project.ProjectMembers">
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="card card-coin card-plain">
+            <div class="card-header">
+              <img class="img-center img-fluid" src="assets/img/bocah.png" />
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 text-center" *ngIf="role.role===0">
+                  <h4 class="text-uppercase">Marketing</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===1">
+                  <h4 class="text-uppercase">Web Developer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===2">
+                  <h4 class="text-uppercase">Web Designer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===3">
+                  <h4 class="text-uppercase">2D Artist</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===4">
+                  <h4 class="text-uppercase">3D Artist</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===5">
+                  <h4 class="text-uppercase">Unity Programmer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===6">
+                  <h4 class="text-uppercase">Game Designer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===7">
+                  <h4 class="text-uppercase">C# Programmer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===8">
+                  <h4 class="text-uppercase">iOS Developer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===9">
+                  <h4 class="text-uppercase">Android Developer</h4>
+                  <hr class="line-primary" />
+                </div>
+                <div class="col-md-12 text-center" *ngIf="role.role===10">
+                  <h4 class="text-uppercase">Social Media Manager</h4>
+                  <hr class="line-primary" />
+                </div>
+
+              </div>
+              <div class="row">
+                <br>
+                <div class="col-md-10 offset-md-1" >
+                  <div class="progress-container progress-danger" *ngIf="role.userId===null">
+                    <span class="text"> Available  </span>
+                    <progressbar class="progress-bar-danger" [value]="0">
+                      <span class="progress-value"> 0 </span>
+                    </progressbar>
+                  </div>
+                  <div class="progress-container progress-danger" *ngIf="role.userId">
+                    <span class="text"> {{role.User.name}}  </span>
+                    <progressbar class="progress-bar-danger" [value]="100">
+                      <span class="progress-value"> 1 </span>
+                    </progressbar>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div *ngIf="currentUser && !members">
+              <div class="card-footer text-center" *ngIf="role.userId===null">
+                <button class="btn btn-primary btn-simple" (click)="joinProject(role.role)">Join
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Contoh doang -->
+        <div class="col-md-3">
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="card card-coin card-plain">
+            <div class="card-header">
+              <img class="img-center img-fluid" src="assets/img/muka.png" />
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h4 class="text-uppercase">Pokemon</h4>
+                  <hr class="line-primary" />
+                </div>
+              </div>
+              <div class="row">
+                <br>
+                <div class="col-md-10 offset-md-1" >
+                  <div class="progress-container progress-danger">
+                    <span class="text"> Budi Setiawan  </span>
+                    <progressbar class="progress-bar-danger" [value]="100">
+                      <span class="progress-value"> 1 </span>
+                    </progressbar>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+<!--            <div class="card-footer text-center">-->
+<!--              <button onclick="location.href='http://www.blogcdn.com/slideshows/images/slides/261/840/2/S2618402/slug/l/mens-male-plastic-surgery-fails-07-igor-grichka-getty-483056855-1.jpg'" class="btn btn-primary btn-simple">Join</button>-->
+<!--            </div>-->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"><h1 class="title">BLK•</h1></div>
+        <div class="col-md-3">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/home']"> Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/landing']"> Landing </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/register']"> Register </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/profile']"> Profile </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="https://creative-tim.com/contact-us">
+                Contact Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://creative-tim.com/about-us">
+                About Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://creative-tim.com/blog">
+                Blog
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://opensource.org/licenses/MIT">
+                License
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h3 class="title">Follow us:</h3>
+          <div class="btn-wrapper profile">
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
+              href="https://twitter.com/creativetim"
+              target="_blank"
+            >
+              <i class="fab fa-twitter"> </i>
+            </a>
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple mr-1"
+              href="https://www.facebook.com/creativetim"
+              target="_blank"
+            >
+              <i class="fab fa-facebook-square"> </i>
+            </a>
+            <a
+              class="btn btn-icon btn-neutral btn-round btn-simple"
+              href="https://dribbble.com/creativetim"
+              target="_blank"
+            >
+              <i class="fab fa-dribbble"> </i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
