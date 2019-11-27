@@ -39,4 +39,8 @@ export class ProjectService {
   joinProjectById(roleId: number, projectId: number): Observable<any>{
     return this.http.post(this.API_URL+`/api/projects/${projectId}/join`, {role: roleId});
   }
+
+  deleteProject(projectId: number): Observable<any>{
+    return this.http.delete(this.API_URL+'/api/projects/'+projectId);
+  }
 }

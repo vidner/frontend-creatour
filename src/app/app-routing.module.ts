@@ -23,8 +23,8 @@ const routes: Routes = [
   { path: "login", component: LoginpageComponent },
   { path: "projects", component: ProjectpageComponent },
   { path: "project/:projectId", component: ProjectdetailpageComponent },
-  { path: "create", component: CreateprojectpageComponent },
-  { path: "myprojects", component: MyprojectpageComponent}
+  { path: "me", component: CreateprojectpageComponent },
+  // { path: "myprojects", component: MyprojectpageComponent}
 ];
 
 @NgModule({

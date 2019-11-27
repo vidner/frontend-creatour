@@ -70,7 +70,7 @@ export class ProjectdetailpageComponent implements OnInit, OnDestroy {
         this.projectService.joinProjectById(role, projectId)
             .subscribe(projects => {
                 console.log(projects);
-                this.router.navigate(['/myprojects']);
+                window.location.reload();
             });
 
     }

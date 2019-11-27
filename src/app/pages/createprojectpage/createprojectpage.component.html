@@ -221,32 +221,36 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                        <span *ngFor="let category of project.ProjectCategories">
-                          <button
-                                  class="btn btn-info btn-sm"
-                          > {{category.category}}
-                          </button>
-                        </span>
+                                              <span *ngFor="let category of project.ProjectCategories">
+                                                <button
+                                                        class="btn btn-info btn-sm"
+                                                > {{category.category}}
+                                                </button>
+                                              </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--                <div class="row">-->
-                                    <!--                  <br>-->
-                                    <!--                  <div class="col-md-10 offset-md-1" >-->
-                                    <!--                    <div class="progress-container progress-danger">-->
-                                    <!--                      <span class="text"> {{project.filled}}/{{project.count}} People Joined  </span>-->
-                                    <!--                      <progressbar class="progress-bar-danger" [value]="project.filled/project.count*100">-->
-                                    <!--                        <span class="progress-value"> {{project.filled/project.count*100 | number: 0}}% </span>-->
-                                    <!--                      </progressbar>-->
-                                    <!--                    </div>-->
-                                    <!--                    <br>-->
-                                    <!--                  </div>-->
-                                    <!--                </div>-->
                                 </div>
                                 <div class="card-footer text-center">
-                                    <button [routerLink]="['/project', project.id]" class="btn btn-primary btn-simple">
-                                        Details
-                                    </button>
+                                  <div class="col-md-10 offset-md-1">
+                                    <div class="progress-container progress-danger">
+                                      <span class="text"> {{project.filled}}/{{project.count}} People Joined  </span>
+                                      <progressbar class="progress-bar-danger"
+                                                   [value]="project.filled/project.count*100">
+                                        <span class="progress-value"
+                                              style="margin-top: 25px"> {{project.filled / project.count * 100 | number: 0}}
+                                          % </span>
+                                      </progressbar>
+                                    </div>
+                                    <br>
+                                  </div>
+                                  <button [routerLink]="['/project', project.id]" class="btn btn-info btn-simple">
+                                    Manage
+                                  </button>
+                                  <button (click)="delete(project.id)" class="btn btn-danger btn-simple"
+                                          style="margin-left: 10px">
+                                    Delete
+                                  </button>
                                 </div>
                             </div>
                         </div>
@@ -293,29 +297,25 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                        <span *ngFor="let category of project.ProjectCategories">
-                          <button
-                                  class="btn btn-info btn-sm"
-                          > {{category.category}}
-                          </button>
-                        </span>
+                                                <span *ngFor="let category of project.ProjectCategories">
+                                                  <button class="btn btn-info btn-sm"> {{category.category}}
+                                                  </button>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--                <div class="row">-->
-                                    <!--                  <br>-->
-                                    <!--                  <div class="col-md-10 offset-md-1" >-->
-                                    <!--                    <div class="progress-container progress-danger">-->
-                                    <!--                      <span class="text"> {{project.filled}}/{{project.count}} People Joined  </span>-->
-                                    <!--                      <progressbar class="progress-bar-danger" [value]="project.filled/project.count*100">-->
-                                    <!--                        <span class="progress-value"> {{project.filled/project.count*100 | number: 0}}% </span>-->
-                                    <!--                      </progressbar>-->
-                                    <!--                    </div>-->
-                                    <!--                    <br>-->
-                                    <!--                  </div>-->
-                                    <!--                </div>-->
+
                                 </div>
                                 <div class="card-footer text-center">
+                                  <div class="progress-container progress-danger">
+                                    <span class="text"> {{project.filled}}/{{project.count}} People Joined  </span>
+                                    <progressbar class="progress-bar-danger"
+                                                 [value]="project.filled/project.count*100">
+                                        <span class="progress-value"
+                                              style="margin-top: 25px"> {{project.filled / project.count * 100 | number: 0}}
+                                          % </span>
+                                    </progressbar>
+                                  </div>
                                     <button [routerLink]="['/project', project.id]" class="btn btn-primary btn-simple">
                                         Details
                                     </button>

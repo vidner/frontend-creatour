@@ -41,7 +41,7 @@
                   <h4 class="text-uppercase">{{project.name}}</h4>
                   <div style="display: block;
                                                         display: -webkit-box;
-                                                        max-width: 200px;
+                                                        /*max-width: 200px;*/
                                                         -webkit-line-clamp: 2;
                                                         -webkit-box-orient: vertical;
                                                         overflow: hidden;
@@ -73,7 +73,7 @@
                     <div class="progress-container progress-danger">
                         <span class="text"> {{project.filled}}/{{project.count}} People Joined  </span>
                         <progressbar class="progress-bar-danger" [value]="project.filled/project.count*100">
-                          <span class="progress-value"> {{project.filled/project.count*100 | number: 0}}% </span>
+                          <span class="progress-value" style="margin-top: 25px"> {{project.filled/project.count*100 | number: 0}}% </span>
                         </progressbar>
                       </div>
                       <br>

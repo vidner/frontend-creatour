@@ -68,6 +68,7 @@ export class CreateprojectpageComponent implements OnInit  {
       role: new FormArray([])
     });
     this.addCheckboxes();
+
     this.projectService.getMyProject()
         .pipe(map(projects => projects.data.map(project => ({
           id: project.id,
@@ -140,17 +141,25 @@ export class CreateprojectpageComponent implements OnInit  {
       "category": selectedCategory,
       "roleList": selectedRole
     }
-
     this.projectService.createProject(newProject)
       .subscribe(
         data => {
           this.loading = false;
-          var id = data.id;
-          this.router.navigate(['/myprojects']);
+          window.location.reload();
         },
         error => {
           this.error = error;
           this.loading = false;
         });
     }
+
+    delete(id){
+      this.projectService.deleteProject(id)
+          .subscribe( data => {
+              this.loading = false;
+              window.location.reload();
+          });
+      //   this.router.navigate(['assets/muka.png']);
+    }
+
 }
