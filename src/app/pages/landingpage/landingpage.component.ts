@@ -30,6 +30,7 @@ export class LandingpageComponent implements OnInit, OnDestroy {
         this.totalProject = projects.data.length;
       });
 
+
     this.userService.getUsers()
       .subscribe(users => {
         this.totalContributor = users.count;

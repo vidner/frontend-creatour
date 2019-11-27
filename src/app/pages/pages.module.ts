@@ -28,7 +28,6 @@ import { ProjectdetailpageComponent } from "./projectdetailpage/projectdetailpag
 import { CreateprojectpageComponent } from "./createprojectpage/createprojectpage.component";
 import {JwtInterceptor} from '../_helpers/jwt.interceptor';
 import {ErrorInterceptor} from '../_helpers/error.interceptor';
-import {MyprojectpageComponent} from './myprojectpage/myprojectpage.component';
 
 @NgModule({
   imports: [
@@ -59,8 +58,7 @@ import {MyprojectpageComponent} from './myprojectpage/myprojectpage.component';
     LoginpageComponent,
     ProjectpageComponent,
     ProjectdetailpageComponent,
-    CreateprojectpageComponent,
-    MyprojectpageComponent
+    CreateprojectpageComponent
   ],
   exports: [
     IndexComponent,
@@ -70,8 +68,7 @@ import {MyprojectpageComponent} from './myprojectpage/myprojectpage.component';
     LoginpageComponent,
     ProjectpageComponent,
     ProjectdetailpageComponent,
-    CreateprojectpageComponent,
-      MyprojectpageComponent
+    CreateprojectpageComponent
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

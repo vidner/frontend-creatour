@@ -106,8 +106,6 @@ export class CreateprojectpageComponent implements OnInit  {
       .subscribe(
         data => {
           this.loading = false;
-          var id = data.id;
-          this.router.navigate(['/myprojects']);
         },
         error => {
           this.error = error;
