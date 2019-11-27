@@ -4,145 +4,137 @@
 
     <img class="path" src="assets/img/path4.png" />
 
-    <form class="form" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+
     <div class="container align-items-center">
       <div class="row">
         <div class="col-lg-6 col-md-6">
           <h1 class="profile-title text-left">
-            {{project.name}}
+            Edit Project
           </h1>
           <div>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-          <div class="card card-coin card-plain">
-            <div class="card-header">
-              <img
-                class="img-center img-fluid rounded-circle"
-                src="assets/img/binomo.png"
-              />
-
-              <h4 class="title">Overview</h4>
+          <div>
+            <div class="text-center text-muted mb-4 mt-3">
             </div>
-            <div class="card-body">
-              <tabset
-                class="nav-tabs-danger justify-content-center tab-subcategories"
+            <form class="form" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+              <span>Main Information</span>
+              <div
+                      class="input-group"
+                      [ngClass]="{ 'input-group-focus': focus === true }"
+                      style="margin-top: 10px"
               >
-              <tab heading="Contributor">
-                  <div class="table-responsive">
-                    <table class="table tablesorter" id="plain-table">
-                      <thead class="text-danger">
-                        <tr>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let contributor of project.ProjectMembers">
-                          <td *ngIf="contributor.userId!==null"><img class="img-center img-fluid" style="width:60px" src="assets/img/muka.png" /></td>
-                          <td *ngIf="contributor.userId!==null">{{contributor.User.name}}</td>
-                        </tr>
-                        <!-- contoh doang -->
-                        <tr>
-                            <td><img class="img-center img-fluid" style="width:60px" src="assets/img/budi.png" /></td>
-                            <td>Budi Setiawan</td>
-                          </tr>
-                      </tbody>
-                    </table>
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="tim-icons icon-single-02"> </i>
                   </div>
-                </tab>
-                <tab heading="Tags">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                          <span *ngFor="let category of project.ProjectCategories">
-                            <button class="btn btn-info btn-sm">
-                              {{category.category}}
-                            </button>
-                          </span>
-                        </div>
-                      </div>
-                </tab>
+                </div>
+                <input
+                        class="form-control"
+                        value="{{project.name}}"
+                        type="text"
+                        (focus)="focus = true"
+                        (blur)="focus = false"
+                        formControlName="name"
+                />
+              </div>
+              <div
+                      class="input-group"
+                      [ngClass]="{ 'input-group-focus': focus1 === true }"
+              >
+                <p>{{project.description}}</p>
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="tim-icons icon-badge"> </i>
+                  </div>
+                </div>
 
-              </tabset>
-            </div>
+                <input
+                        class="form-control"
+                        value="{{project.description}}"
+                        type="text"
+                        (focus)="focus1 = true"
+                        (blur)="focus1 = false"
+                        formControlName="description"
+                />
+              </div>
+
+<!-- OWWWWWWWWWWWWWWOOOOOOOOOOOOOO -->
+              <span>Social Information</span>
+              <div
+                      class="input-group"
+                      [ngClass]="{ 'input-group-focus': focus2 === true }"
+                      style="margin-top: 10px"
+              >
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="tim-icons icon-components"> </i>
+                  </div>
+                </div>
+                <input
+                        class="form-control"
+                        placeholder="Github Link"
+                        type="text"
+                        (focus)="focus2 = true"
+                        (blur)="focus2 = false"
+                        formControlName="github"
+                />
+              </div>
+              <div
+                      class="input-group"
+                      [ngClass]="{ 'input-group-focus': focus3 === true }"
+              >
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="tim-icons icon-chat-33"> </i>
+                  </div>
+                </div>
+                <input
+                        class="form-control"
+                        placeholder="Slack Link"
+                        type="text"
+                        (focus)="focus3 = true"
+                        (blur)="focus3 = false"
+                        formControlName="slack"
+                />
+              </div>
+              <div
+                      class="input-group"
+                      [ngClass]="{ 'input-group-focus': focus4 === true }"
+              >
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="tim-icons icon-calendar-60"> </i>
+                  </div>
+                </div>
+                <input
+                        class="form-control"
+                        placeholder="Trello Link"
+                        type="text"
+                        (focus)="focus4 = true"
+                        (blur)="focus4 = false"
+                        formControlName="trello"
+                />
+              </div>
+
+              <div class="form-group">
+                <br>
+                <button [disabled]="loading" class="btn btn-primary btn-round btn-lg">
+                  Save Changes
+                </button>
+                <img *ngIf="loading" class="pl-2"
+                     src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+              </div>
+              <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-    </form>
   </div>
-  <div class="section">
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-md-6">
-          <div class="row justify-content-between align-items-center">
-            <carousel [showIndicators]="true">
-              <slide>
-                <img
-                  alt="First slide"
-                  class="d-block"
-                  src="assets/img/denys.jpg"
-                />
 
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Big City Life, United States</h5>
-                </div>
-              </slide>
-              <slide>
-                <img
-                  alt="Second slide"
-                  class="d-block"
-                  src="assets/img/fabien-bazanegue.jpg"
-                />
-
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Somewhere Beyond, United States</h5>
-                </div>
-              </slide>
-              <slide>
-                <img
-                  alt="Third slide"
-                  class="d-block"
-                  src="assets/img/mark-finn.jpg"
-                />
-
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Stocks, United States</h5>
-                </div>
-              </slide>
-            </carousel>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <h1 class="profile-title text-left">Description</h1>
-          <h5 class="text-on-back">01</h5>
-          <p class="profile-description text-left">
-            {{project.description}}
-          </p>
-
-          <br>
-          <div *ngIf="members">
-            <hr class="line-primary"/>
-              <h5>Join Us</h5>
-            <hr class="line-primary"/>
-            <div class="btn-wrapper pt-3">
-              <button class="btn btn-simple btn-danger mr-1" href="javascript:void(0)">
-                Slack
-              </button>
-              <button class="btn btn-simple btn-info mr-1" href="javascript:void(0)">
-                Trello
-              </button>
-              <button class="btn btn-simple btn-default mr-1" href="javascript:void(0)">
-                Github
-              </button>
-              <button class="btn btn-simple btn-success" href="javascript:void(0)">
-                Telegram
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <section class="section">
     <div class="container">
       <div class="row">
@@ -154,39 +146,8 @@
             </div>
           </div>
         </div>
-<!--        <div class="col-md-4 ml-auto">-->
-<!--          <div class="info info-horizontal">-->
-<!--            <div class="icon icon-danger">-->
-<!--              <i class="tim-icons icon-square-pin"> </i>-->
-<!--            </div>-->
-<!--            <div class="description">-->
-<!--              <h4 class="info-title">Find us at the office</h4>-->
-<!--              <p>-->
-<!--                Bld Mihail Kogalniceanu, nr. 8, <br />-->
-
-<!--                7652 Bucharest, <br />-->
-
-<!--                Romania-->
-<!--              </p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="info info-horizontal">-->
-<!--            <div class="icon icon-danger">-->
-<!--              <i class="tim-icons icon-mobile"> </i>-->
-<!--            </div>-->
-<!--            <div class="description">-->
-<!--              <h4 class="info-title">Give us a ring</h4>-->
-<!--              <p>-->
-<!--                Michael Jordan <br />-->
-
-<!--                +40 762 321 762 <br />-->
-
-<!--                Mon - Fri, 8:00-22:00-->
-<!--              </p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
       </div>
+
       <div class="row"
            style="display: flex; flex-direction: row; justify-content: center"
            >
@@ -266,12 +227,12 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="currentUser && !members">
-              <div class="card-footer text-center" *ngIf="role.userId===null">
-                <button class="btn btn-primary btn-simple" (click)="joinProject(role.role)">Join
+              <div class="card-footer text-center">
+                <button class="btn btn-primary btn-simple" (click)="kickMember(role.userId)">Kick
+                </button>
+                <button class="btn btn-danger btn-simple" (click)="delRole(role.userId)" style="margin-left: 10px">Delete
                 </button>
               </div>
-            </div>
           </div>
         </div>
         <!-- Contoh doang -->
@@ -287,7 +248,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-md-12 text-center">
-                  <h4 class="text-uppercase">Pokemon</h4>
+                  <h4 class="text-uppercase">New Role</h4>
                   <hr class="line-primary" />
                 </div>
               </div>
@@ -295,12 +256,20 @@
                 <br>
                 <div class="col-md-10 offset-md-1" >
                   <div class="progress-container progress-danger">
-                    <span class="text"> Budi Setiawan  </span>
-                    <progressbar class="progress-bar-danger" [value]="100">
-                      <span class="progress-value"> 1 </span>
-                    </progressbar>
+                    <select
+                            class="form-control"
+                            (focus)="focus = true"
+                            (blur)="focus = false"
+                            formControlName="role"
+                    >
+                      <option *ngFor="let role of rolesAvail" value="{{role.id}}">{{role.role}}</option>
+                    </select>
                   </div>
-
+                  <div class="card-footer text-center">
+                    <button class="btn btn-success btn-simple" (click)="newRole()" style="margin-left: 10px">
+                      Add
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
