@@ -59,7 +59,7 @@ export class CreateprojectpageComponent implements OnInit  {
   }
 
   ngOnInit() {
-    // console.log(this.currentUser);
+    console.log(this.currentUser);
 
     this.projectForm = this.formBuilder.group({
       name: ['', Validators.required],

@@ -19,7 +19,7 @@
                 <h4 class="card-title">Profile</h4>
               </div>
               <div class="card-body">
-                <input type="file" (change)="onFileChanged($event)">
+                <input type="file" (change)="onFileChanged($event)" style="margin-bottom: 10px; margin-top: 10px">
                 <button (click)="onUpload()" [disabled]="loading" class="btn btn-primary btn-round btn-lg">Change Profile</button>
               </div>
             </div>
@@ -45,7 +45,7 @@
                     class="input-group"
                     [ngClass]="{ 'input-group-focus': focus === true }"
                   >
-                    <div class="input-group-prepend">
+                    <div class="input-group-prepend" >
                       <div class="input-group-text">
                         <i class="tim-icons icon-single-02"> </i>
                       </div>
@@ -63,7 +63,7 @@
                     class="input-group"
                     [ngClass]="{ 'input-group-focus': focus1 === true }"
                   >
-                    <div class="input-group-prepend">
+                    <div class="input-group-prepend" style="margin-right: 15px;">
                       <div class="input-group-text">
                         <i class="tim-icons icon-badge"> </i>
                       </div>
@@ -80,9 +80,9 @@
                   </div>
                   <div
                     class="input-group"
-                    [ngClass]="{ 'input-group-focus': focus3 === true }"
+                    [ngClass]="{ 'input-group-focus': focus2 === true }"
                   >
-                    <div class="input-group-prepend">
+                    <div class="input-group-prepend" style="margin-right: 15px;">
                       <div class="input-group-text">
                         <i class="tim-icons icon-email-85"> </i>
                       </div>
@@ -91,8 +91,8 @@
                       class="form-control"
                       placeholder="Email"
                       type="text"
-                      (focus)="focus3 = true"
-                      (blur)="focus3 = false"
+                      (focus)="focus2 = true"
+                      (blur)="focus2 = false"
                       formControlName="email"
                       disabled
                     />
