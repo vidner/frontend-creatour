@@ -1,187 +1,10 @@
 <div class="wrapper">
   <div class="page-header">
     <div class="page-header-image"></div>
-    <img class="path" src="assets/img/path2.png" />
     <div class="content">
       <div class="container">
-          
         <div class="row">
-          <div class="col-md-2 offset-md-1">
-            <h1 class="profile-title text-left">Mike baba</h1>
-              <img
-                alt="Rounded image"
-                class="img-fluid rounded shadow"
-                src="assets/img/ryan.jpg"
-                style="width: 150px;"
-              />
-              <br>
-              <br>
-              <p class="profile-description text-left">
-                Offices parties lasting outward n othing age few resolve. Impression
-                to discretion understood to we 
-              </p>
-          </div>
-          <div class="col-md-6 offset-md-0 card">
-              <div class="row justify-content-between align-items-center">
-                <carousel [showIndicators]="true">
-                  <slide>
-                    <img
-                      alt="First slide"
-                      class="d-block"
-                      src="assets/img/denys.jpg"
-                    />
-    
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Big City Life, United States</h5>
-                    </div>
-                  </slide>
-                  <slide>
-                    <img
-                      alt="Second slide"
-                      class="d-block"
-                      src="assets/img/fabien-bazanegue.jpg"
-                    />
-    
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Somewhere Beyond, United States</h5>
-                    </div>
-                  </slide>
-                  <slide>
-                    <img
-                      alt="Third slide"
-                      class="d-block"
-                      src="assets/img/mark-finn.jpg"
-                    />
-    
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>Stocks, United States</h5>
-                    </div>
-                  </slide>
-                </carousel>
-              </div>
-            </div>
-            <div class="row-md-1">
-                <div class="col">
-                    <tabset type="pills" class="nav-pills-primary nav-pills-icons">
-                        <tab>
-                          <ng-template tabHeading>
-                            <i class="tim-icons icon-simple-add" data-target="#myModal2"
-                            (click)="myModal2.show()"> </i> Create Project
-                          </ng-template>
-                        </tab>
-                      </tabset>
-                </div>
-                <div class="col">
-                    <tabset type="pills" class="nav-pills-danger nav-pills-icons">
-                        <tab>
-                          <ng-template tabHeading>
-                            <i class="tim-icons icon-settings-gear-63"> </i>Profile Settings
-                          </ng-template>
-                        </tab>
-                      </tabset>
-                </div>
-            </div>
-            <div
-            aria-hidden="true"
-            aria-labelledby="myModalLabel"
-            bsModal
-            class="modal fade modal-black"
-            #myModal2="bs-modal"
-            id="myModal2"
-            role="dialog"
-            tabindex="-1"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header justify-content-center">
-                  <button
-                    aria-hidden="true"
-                    class="close"
-                    data-dismiss="modal"
-                    (click)="myModal2.hide()"
-                    type="button"
-                  >
-                    <i class="tim-icons icon-simple-remove text-white"> </i>
-                  </button>
-                  <div class="text-muted text-center ml-auto mr-auto">
-                    <h3 class="mb-0">Sign in with</h3>
-                  </div>
-                </div>
-                <div class="modal-body">
-                  <div class="text-center text-muted mb-4 mt-3">
-                  </div>
-                  <form class="form" [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-                      <div
-                        class="input-group"
-                        [ngClass]="{ 'input-group-focus': focus === true }"
-                      >
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="tim-icons icon-single-02"> </i>
-                          </div>
-                        </div>
-                        <input
-                          class="form-control"
-                          placeholder="Project Name"
-                          type="text"
-                          (focus)="focus = true"
-                          (blur)="focus = false"
-                          formControlName="name"
-                        />
-                      </div>
-                      <div
-                        class="input-group"
-                        [ngClass]="{ 'input-group-focus': focus1 === true }"
-                      >
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="tim-icons icon-badge"> </i>
-                          </div>
-                        </div>
-                        <input
-                          class="form-control"
-                          placeholder="Project Description"
-                          type="text"
-                          (focus)="focus1 = true"
-                          (blur)="focus1 = false"
-                          formControlName="description"
-                        />
-                      </div>
-    
-                      <span>Category</span>
-                      <div class="row">
-                        <div class="form-check text-left" formArrayName="category" *ngFor="let category of projectForm.controls.category.controls; let i = index">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" [formControlName]="i"/>
-                              <span class="form-check-sign"> </span> {{categories[i].name}}
-                            </label>
-                        </div>
-                      </div>
-                      <br>
-                      <span>Role</span>
-                      <div class="row">
-                          <div class="form-check text-left" formArrayName="role" *ngFor="let role of projectForm.controls.role.controls; let i = index">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" [formControlName]="i"/>
-          
-                                <span class="form-check-sign"> </span> {{roles[i].role}}
-                              </label>
-                            </div>
-                      </div>
-                      <div class="form-group">
-                        <br>
-                          <button [disabled]="loading" class="btn btn-primary btn-round btn-lg">Create Project</button>
-                          <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                        </div>
-                        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-                    </form>
-                </div>
-              </div>
-            </div>
-          </div>
-            
-            
-          <!-- <div class="col-md-8 col-md-6 offset-lg-0 offset-md-3">
+          <div class="col-lg-5 col-md-6 offset-lg-0 offset-md-3">
             <div class="square square-7" id="square7"></div>
             <div class="square square-8" id="square8"></div>
             <div class="card card-register">
@@ -232,27 +55,25 @@
                       formControlName="description"
                     />
                   </div>
-
+                  <hr class="line-primary" />
                   <span>Category</span>
-                  <div class="row">
-                    <div class="form-check text-left" formArrayName="category" *ngFor="let category of projectForm.controls.category.controls; let i = index">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" [formControlName]="i"/>
-                          <span class="form-check-sign"> </span> {{categories[i].name}}
-                        </label>
-                    </div>
+                  <div class="form-check text-left" formArrayName="category" *ngFor="let category of projectForm.controls.category.controls; let i = index">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" [formControlName]="i"/>
+
+                      <span class="form-check-sign"> </span> {{categories[i].name}}
+                    </label>
+                  </div>
+                  <hr class="line-primary" />
+                  <span>Role</span>
+                  <div class="form-check text-left" formArrayName="role" *ngFor="let role of projectForm.controls.role.controls; let i = index">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" [formControlName]="i"/>
+
+                      <span class="form-check-sign"> </span> {{roles[i].role}}
+                    </label>
                   </div>
 
-                  <span>Role</span>
-                  <div class="row">
-                      <div class="form-check text-left" formArrayName="role" *ngFor="let role of projectForm.controls.role.controls; let i = index">
-                          <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" [formControlName]="i"/>
-      
-                            <span class="form-check-sign"> </span> {{roles[i].role}}
-                          </label>
-                        </div>
-                  </div>
                   <div class="form-group">
                     <br>
                       <button [disabled]="loading" class="btn btn-primary btn-round btn-lg">Create Project</button>
@@ -263,7 +84,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
         <div class="register-bg"></div>
         <div class="square square-1" id="square1"></div>
         <div class="square square-2" id="square2"></div>
