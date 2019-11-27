@@ -55,7 +55,7 @@
                       formControlName="description"
                     />
                   </div>
-
+                  <hr class="line-primary" />
                   <span>Category</span>
                   <div class="form-check text-left" formArrayName="category" *ngFor="let category of projectForm.controls.category.controls; let i = index">
                     <label class="form-check-label">
@@ -64,7 +64,7 @@
                       <span class="form-check-sign"> </span> {{categories[i].name}}
                     </label>
                   </div>
-
+                  <hr class="line-primary" />
                   <span>Role</span>
                   <div class="form-check text-left" formArrayName="role" *ngFor="let role of projectForm.controls.role.controls; let i = index">
                     <label class="form-check-label">
