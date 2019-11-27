@@ -64,8 +64,11 @@ export class ProjectdetailpageComponent implements OnInit, OnDestroy {
     }
 
     joinProject(role: number){
-      console.log(role);
-      let projectId = +this.route.snapshot.paramMap.get('id');
+      let projectId = +this.route.snapshot.paramMap.get('projectId');
+      this.projectService.joinProjectById(role, projectId)
+        .subscribe(projects => {
+            console.log(projects);
+        });
     }
 
 }
