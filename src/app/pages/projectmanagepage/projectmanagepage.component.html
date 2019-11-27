@@ -230,7 +230,7 @@
               <div class="card-footer text-center">
                 <button class="btn btn-primary btn-simple" (click)="kickMember(role.userId)">Kick
                 </button>
-                <button class="btn btn-danger btn-simple" (click)="delRole(role.userId)" style="margin-left: 10px">Delete
+                <button class="btn btn-danger btn-simple" (click)="delRole(role.id)" style="margin-left: 10px">Delete
                 </button>
               </div>
           </div>
@@ -261,8 +261,9 @@
                             (focus)="focus = true"
                             (blur)="focus = false"
                             formControlName="role"
-                    >
-                      <option *ngFor="let role of rolesAvail" value="{{role.id}}">{{role.role}}</option>
+                            (change)="selectChangeHandler($event)"
+                      >
+                      <option style="color:black;" *ngFor="let role of rolesAvail" [value]="role.id">{{role.role}}</option>
                     </select>
                   </div>
                   <div class="card-footer text-center">

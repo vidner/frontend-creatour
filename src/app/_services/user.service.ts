@@ -18,4 +18,8 @@ export class UserService {
   getUsers(): Observable<any>{
     return this.http.get(this.API_URL+'/api/users');
   }
+
+  uploadProfilePicture(profilePicture): Observable<any>{
+    return this.http.post(this.API_URL+'/api/users/upload', profilePicture);
+  }
 }

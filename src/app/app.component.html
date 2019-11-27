@@ -64,6 +64,9 @@
             <a class="nav-link" [routerLink]="['/me']"> My Projects </a>
           </li>
           <li class="nav-item" *ngIf="currentUser">
+            <a class="nav-link" [routerLink]="['/editprofile']"> Profile </a>
+          </li>
+          <li class="nav-item" *ngIf="currentUser">
             <a class="nav-link" (click)="logout()"> Logout </a>
           </li>
         </ul>

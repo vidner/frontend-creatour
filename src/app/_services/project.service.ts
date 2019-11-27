@@ -48,7 +48,11 @@ export class ProjectService {
     return this.http.delete(this.API_URL+'/api/projects/'+projectId);
   }
 
-  deleteRole(roleId: number): Observable<any>{
-    return this.http.delete(this.API_URL+'/api/projects/'+projectId);
+  deleteRoleById(positionId: number): Observable<any>{
+    return this.http.delete(this.API_URL + `/api/projects/role/${positionId}`);
+  }
+
+  createRoleByProjectId(role: number, projectId: number): Observable<any>{
+    return this.http.post(this.API_URL+`/api/projects/${projectId}/role`, {role: role});
   }
 }

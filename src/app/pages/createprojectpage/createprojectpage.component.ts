@@ -19,7 +19,7 @@ export class CreateprojectpageComponent implements OnInit  {
   loading = false;
   submitted = false;
   returnUrl: string;
-  error = '';
+  error= '';
 
   // List categories: ['Game', 'Web', 'Software', 'Browser Game', 'Mobile Apps', 'Mobile Game']
   // Hardcode dulu, ntar coba bikin GET categories di backend

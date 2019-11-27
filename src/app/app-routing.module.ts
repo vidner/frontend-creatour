@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
+import { AuthGuard } from './_guards/auth.guard';
 
 import { IndexComponent } from "./pages/index/index.component";
 import { ProfilepageComponent } from "./pages/profilepage/profilepage.component";
@@ -13,6 +14,7 @@ import { ProjectdetailpageComponent } from "./pages/projectdetailpage/projectdet
 import { CreateprojectpageComponent } from "./pages/createprojectpage/createprojectpage.component";
 import {MyprojectpageComponent} from './pages/myprojectpage/myprojectpage.component';
 import {ProjectmanagepageComponent} from './pages/projectmanagepage/projectmanagepage.component';
+import {EditprofilepageComponent} from './pages/editprofilepage/editprofilepage.component';
 
 // TO DO: Implementasi AuthGuard
 const routes: Routes = [
@@ -24,8 +26,9 @@ const routes: Routes = [
   { path: "login", component: LoginpageComponent },
   { path: "projects", component: ProjectpageComponent },
   { path: "project/:projectId", component: ProjectdetailpageComponent },
-  { path: "me", component: CreateprojectpageComponent },
-  { path: "manage/:projectId", component: ProjectmanagepageComponent}
+  { path: "me", component: CreateprojectpageComponent, canActivate: [AuthGuard]},
+  { path: "manage/:projectId", component: ProjectmanagepageComponent, canActivate: [AuthGuard]},
+  { path: "editprofile", component: EditprofilepageComponent}
   // { path: "myprojects", component: MyprojectpageComponent}
 ];
 

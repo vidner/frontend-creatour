@@ -25,6 +25,7 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
     projectForm: FormGroup;
     rolesExist = [];
     rolesAvail: any = [];
+    selectedRole: number;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -84,6 +85,7 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
                     empty.push(val);
                 }
             });
+
             this.rolesAvail = empty;
             this.projectForm.controls['name'].setValue(this.project.name);
             this.projectForm.controls['description'].setValue(this.project.description);
@@ -107,7 +109,6 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
     }
 
     onSubmit() {
-        console.log("test");
         // this.submitted = true;
 
         // reset alerts on submit
@@ -152,15 +153,25 @@ export class ProjectmanagepageComponent implements OnInit, OnDestroy {
     }
 
     newRole(){
-
+      let projectId = +this.route.snapshot.paramMap.get('projectId');
+      console.log(projectId);
+      this.projectService.createRoleByProjectId(this.selectedRole, projectId)
+          .subscribe(data => {
+              this.loading = false;
+              window.location.reload();
+          });
     }
 
-    delRole(id){
-        this.projectService.deleteRole(id)
+    delRole(positionId){
+        this.projectService.deleteRoleById(positionId)
             .subscribe(data => {
                 this.loading = false;
                 window.location.reload();
             });
+    }
+
+    selectChangeHandler (event: any) {
+      this.selectedRole = event.target.value;
     }
 
 }
