@@ -60,7 +60,7 @@
                       </thead>
                       <tbody>
                         <tr *ngFor="let contributor of project.ProjectMembers">
-                          <td *ngIf="contributor.userId!==null"><img class="img-center img-fluid" style="width:60px" src="assets/img/muka.png" /></td>
+                          <td *ngIf="contributor.userId!==null"><img class="img-center img-fluid" style="width:60px" src="http://localhost:8888/profile/{{contributor.User.profilePicture}}" /></td>
                           <td *ngIf="contributor.userId!==null">{{contributor.User.name}}</td>
                         </tr>
                       </tbody>
@@ -140,18 +140,15 @@
               <h5>Join Us</h5>
             <hr class="line-primary"/>
             <div class="btn-wrapper pt-3">
-              <button class="btn btn-simple btn-danger mr-1" href="javascript:void(0)">
+              <a class="btn btn-simple btn-danger mr-1" *ngIf="project.slackLink" href="{{project.slackLink}}">
                 Slack
-              </button>
-              <button class="btn btn-simple btn-info mr-1" href="javascript:void(0)">
+              </a>
+              <a class="btn btn-simple btn-info mr-1" *ngIf="project.trelloLink" href="{{project.trelloLink}}">
                 Trello
-              </button>
-              <button class="btn btn-simple btn-default mr-1" href="javascript:void(0)">
+              </a>
+              <a class="btn btn-simple btn-default mr-1" *ngIf="project.githubLink" href="{{project.githubLink}}">
                 Github
-              </button>
-              <button class="btn btn-simple btn-success" href="javascript:void(0)">
-                Telegram
-              </button>
+              </a>
             </div>
           </div>
         </div>

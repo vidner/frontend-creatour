@@ -44,9 +44,6 @@ export class EditprofilepageComponent implements OnInit  {
   onSubmit() {
     this.submitted = true;
 
-    // reset alerts on submit
-
-    // stop here if form is invalid
     if (this.registerForm.invalid) {
         return;
     }
@@ -75,6 +72,11 @@ export class EditprofilepageComponent implements OnInit  {
       this.userService.uploadProfilePicture(profilePicture)
         .subscribe(status => {
           console.log(status);
-        })
+          this.router.navigate(['/me']);
+        },
+        error => {
+            this.error = error;
+            this.loading = false;
+        });
     }
 }
